@@ -14,7 +14,7 @@ After enabling Linux on a Chromebook,run `kde-setup.sh` to setup the KDE program
 ### Instructions ###
 
 * In the Chromebox settings, enable Linux (the default 7.5G size is OK).
-* Run `git clone https://joedefen@bitbucket.org/joedefen/crostini-kde-setup.git`
+* Run `git clone https://github.com/joedefen/crostini-kde-setup.git`
 * Run `bash crostini-kde-setup/kde-setup.sh`
 * After the reboot, launch `Terminal` and run:
     * `qt5ct` and select/apply the Breeze icon theme.
