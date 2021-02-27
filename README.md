@@ -5,7 +5,7 @@ Doing so is a bit tricky and undocumented.
 
 ### Purpose ###
 
-After enabling Linux on a Chromebook,run `kde-setup.sh` to setup the KDE program environment and install:
+After enabling Linux on a Chromebook, run `kde-setup.sh` to setup the KDE program environment and install:
 
 * **Discover** - to add more apps.
 * **qt5ct** - to establish the Breeze icon theme.
