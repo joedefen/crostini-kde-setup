@@ -12,7 +12,7 @@ Environment="QT_QPA_PLATFORMTHEME=qt5ct"
 Environment="XDG_CURRENT_DESKTOP=KDE"
 EOF
 
-sudo apt -y install qt5ct menulibre breeze-icon-theme
+sudo apt -y install qt5ct menulibre breeze-icon-theme ttf-dejavu
 sudo apt -y install --no-install-recommends plasma-discover
 
 set +x

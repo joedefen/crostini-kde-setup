@@ -20,4 +20,6 @@ After enabling Linux on a Chromebook, run `kde-setup.sh` to setup the KDE progra
     * `qt5ct` and select/apply the Breeze icon theme.
     * `rm -rf crostini-kde-setup` to remove the downloaded script.
 * Launch `Discover` to install more programs.
-* As needed, use MenuLibre to fix broken Chromebook App Drawer icons.  For instructions, see https://www.reddit.com/r/Crostini/comments/kmxkih/an_easy_way_to_fix_the_penguin_icon_on_some_app
+* As needed, use MenuLibre to fix broken Chromebook App Drawer icons.
+	* For instructions, see https://www.reddit.com/r/Crostini/comments/kmxkih/an_easy_way_to_fix_the_penguin_icon_on_some_app
+	* You must run menulibre like this:  `XDG_CURRENT_DESKTOP= menulibre`
