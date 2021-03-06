@@ -19,8 +19,11 @@ Additionally, the setup script installs these core KDE apps that can be launched
 * After enabling Linux (Beta), a "Terminal" will open;  then enter these commands (one per line):
 	* `git clone https://github.com/joedefen/crostini-kde-setup.git`
 	* `bash crostini-kde-setup/kde-setup.sh`
+* *Note: to enter the commands, you may copy each line in Chrome and right-click within the Terminal to paste, saving typing and avoiding typos.*
 * After the script completes (and it will take 10 minutes or so), find your installed Linux apps in the 'Linux app' folder of your Chromebook App Drawer.
-* Launch **Discover** to browse for available application, install apps, launch installed apps, and remove unwanted apps.
+* In Terminal, optionally remove the install script by running:
+	* `rm -rf ~/crostini-kde-setup`
+* Launch **Discover** to browse for available apps, install apps, launch installed apps, and remove unwanted apps.
 
 ### Additional Notes ###
 * The script establishes the Breeze Icon Theme.  After setup, from **Terminal** you can run `qt5ct` to vary some user interface settings.
