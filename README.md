@@ -21,6 +21,8 @@ Additionally, the setup script installs these core KDE apps that can be launched
 	* `bash crostini-kde-setup/kde-setup.sh`
 * *Note: to enter the commands, you may copy each line in Chrome and right-click within the Terminal to paste, saving typing and avoiding typos.*
 * After the script completes (and it will take 10 minutes or so), find your installed Linux apps in the 'Linux app' folder of your Chromebook App Drawer.
+* In Terminal, optionally remove the install script by running:
+	* `rm -rf ~/crostini-kde-setup`
 * Launch **Discover** to browse for available apps, install apps, launch installed apps, and remove unwanted apps.
 
 ### Additional Notes ###
