@@ -29,8 +29,8 @@ Additionally, the setup script installs these core KDE apps that can be launched
 * **Beware of Beta Software**.  Linux (Beta) has many bugs, although improving and already quite useful.
 	* Sometimes the Linux container cannot be restarted; see [Moderators, can we get a pin on Error 51 and other Linux won't start situations?(Reddit)](https://www.reddit.com/r/Crostini/comments/ljdbck/moderators_can_we_get_a_pin_on_error_51_and_other/). So,
 		* You may be able to set a flag (chrome://flags/#crostini-reset-lxd-db) to get it working.
-		* If not reapairable, you may be able to recover any data.
-		* The ultimate fix is to remove Linux (Beta) and (1) then renable it and do the setup or (2) restore from backup [Restore your Linux (Beta)](https://support.google.com/chromebook/answer/9592813?hl=en)
+		* If not repairable, you may be able to recover your data.
+		* The last restor fix is to remove Linux (Beta) and (1) then renable it and do the setup or (2) restore from backup [Restore your Linux (Beta)](https://support.google.com/chromebook/answer/9592813?hl=en)
 	* Protect yourself by doing regular backups (to an SD card if short on internal disk space).  See [Back up & restore your Linux (Beta) files and apps](https://support.google.com/chromebook/answer/9592813?hl=en)
 * **You can vary UI settings.** The script establishes the Breeze Icon Theme.  After setup, from **Terminal** you can run `qt5ct` to vary some user interface settings.
 * **Make your non-Linux files available to Linux.** From Chromebook Files, right click on "My Files", "Google Drive", and "SD Card" (if installed) and select "Share with Linux" to make each visible to Linux.
