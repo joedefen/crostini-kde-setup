@@ -26,7 +26,7 @@ Additionally, the setup script installs these core KDE apps that can be launched
 1. Launch **Discover** to browse for available apps, install apps, launch installed apps, and remove unwanted apps.
 
 ### Additional Notes ###
-* **Beware of Beta Software**.  Linux (Beta) has many bugs, although improving and still being very useful.
+* **Beware of Beta Software**.  Linux (Beta) has many bugs, although improving and already quite useful.
 	* Sometimes the Linux container cannot be restarted; see [Moderators, can we get a pin on Error 51 and other Linux won't start situations?(Reddit)](https://www.reddit.com/r/Crostini/comments/ljdbck/moderators_can_we_get_a_pin_on_error_51_and_other/). So,
 		* You may be able to set a flag (chrome://flags/#crostini-reset-lxd-db) to get it working.
 		* If not reapairable, you may be able to recover any data.
