@@ -10,7 +10,11 @@ Additionally, the setup script installs these core KDE apps that can be launched
 * **Kate** - an text editor with programming support for many languages.
 * **Okular** - a document viewier that handles PDFs, E-books, and many more document formats.
 
-*Note: this script has been tested on Chromebook v88.*
+And the custom maintenance tool, **MaintGUI**, which has two buttons:
+* **Update Linux** - updates your Linux and its software which you should run periodically
+* **Refresh Icons** - repairs icons for linux app when messed up.
+
+*Note: this script has been tested on Chromebook v88 and v89.*
 
 
 ### Instructions ###

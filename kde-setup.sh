@@ -1,10 +1,17 @@
 #!/bin/bash
 
+HERE=$(dirname $(realpath $0))
+BIN=~/.local/bin
+
 set -x
 
-sudo apt -y update
-sudo apt -y upgrade
-sudo apt -y dist-upgrade
+mkdir -p $BIN
+for x in maint-gui update-linux refresh-icons; do
+    cp $HERE/$x $BIN/.
+done
+MaintGUI=$(realpath $BIN/maint-gui)
+
+bash $BIN/update-linux
 
 CONF=/etc/systemd/user/cros-garcon.service.d/cros-garcon-override.conf
 sudo tee -a $CONF >/dev/null <<'EOF'
@@ -15,11 +22,27 @@ EOF
 sudo apt -y install qt5ct breeze-icon-theme ttf-dejavu
 sudo apt -y install --no-install-recommends plasma-discover
 xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/apps/system-file-manager.png
+xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/apps/system-software-update.png
 xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/512x512/apps/utilities-terminal.png
 sudo apt -y install dolphin konsole kate okular
+sudo apt -y install python3-pip python3-tk
+sudo pip3 install PySimpleGUI
+sudo apt -y purge python3-pip
+sudo apt -y autoremove
 
-mkdir -p .config/qt5ct
-cat >.config/qt5ct/qt5ct.conf <<'EOF'
+mkdir -p ~/.local/share/applications
+cat >~/.local/share/applications/MaintGUI <<EOF
+[Desktop Entry]
+Name=MaintGUI
+Comment=Update Linux
+Exec=${MaintGUI}
+Terminal=false
+Type=Application
+Icon=system-software-update
+EOF
+
+mkdir -p ~/.config/qt5ct
+cat >~/.config/qt5ct/qt5ct.conf <<'EOF'
 [Appearance]
 color_scheme_path=/usr/share/qt5ct/colors/airy.conf
 custom_palette=false

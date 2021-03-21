@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Requirements on Ubuntu:
+  - sudo apt install python3-tk
+#  - pip3 install HTMLParser --user
+  - pip3 install PySimpleGUI --user
+
+
+"""
+import re
+import sys
+import traceback
+import subprocess
+
+import PySimpleGUI as sg
+
+def run_cmd(cmd, window=None, timeout=None):
+    nop = None
+    """ run shell command
+    @param cmd: command to execute
+    @param timeout: timeout for command execution
+    @param window: the PySimpleGUI window that the output is going to (needed to do refresh on)
+    @return: (return code from command, command output)
+    """
+    p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    output = ''
+    for line in p.stdout:
+	    line = line.decode(errors='replace' if (sys.version_info) < (3, 5) else 'backslashreplace').rstrip()
+	    output += line
+	    print(line)
+	    window.refresh() if window else nop        # yes, a 1-line if, so shoot me
+
+    retval = p.wait(timeout)
+    return (retval, output)
+
+sg.theme('BluePurple')
+# sg.theme('DarkAmber')   # Add a touch of color
+# All the stuff inside your window.
+history = []
+layout = [
+            [
+                sg.Button('Update Linux'),
+                sg.Button('Refresh Icons'),
+            ],
+            [
+                sg.Output(size=(120,36), font=('Monospace', 11))
+            ]
+         ]
+window = sg.Window('Linux Maint GUI', layout, location=(1957,1196))
+# Event Loop to process "events" and get the "values" of the inputs
+while True:
+    try:
+        event, value_dict = window.read()
+        pattern, wds = '', []
+        if isinstance(value_dict, dict) and value_dict:
+            pattern = list(value_dict.values())[0]
+            wds = pattern.split()
+        # print('\n\nevent:', event, 'wds:', wds)
+        if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
+            break
+        # print('You entered ', pattern)
+        if event == 'Update Linux':
+            print('\n\n      --------------------------')
+            run_cmd('bash ~/.local/bin/update-linux', window)
+            print('----------- DONE --------------\n')
+        elif event == 'Refresh Icons':
+            print('\n\n      --------------------------')
+            run_cmd('bash ~/.local/bin/refresh-icons', window)
+            print('----------- DONE --------------\n')
+
+    except Exception as exc:
+        print('EXCEPTION:', traceback.format_exc())
+
+window.close()
+        
+
