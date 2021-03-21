@@ -31,7 +31,7 @@ sudo apt -y purge python3-pip
 sudo apt -y autoremove
 
 mkdir -p ~/.local/share/applications
-cat >~/.local/share/applications/MaintGUI <<EOF
+cat >~/.local/share/applications/MaintGUI.desktop <<EOF
 [Desktop Entry]
 Name=MaintGUI
 Comment=Update Linux
