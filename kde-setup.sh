@@ -25,9 +25,8 @@ xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/apps/syste
 xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/apps/system-software-update.png
 xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/512x512/apps/utilities-terminal.png
 sudo apt -y install dolphin konsole kate okular
-sudo apt -y install python3-pip python3-tk
+sudo apt -y install --no-install-recommends python3-pip python3-tk
 sudo pip3 install PySimpleGUI
-sudo apt -y purge python3-pip
 sudo apt -y autoremove
 
 mkdir -p ~/.local/share/applications
