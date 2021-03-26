@@ -41,8 +41,26 @@ Type=Application
 Icon=system-software-update
 EOF
 
+mkdir -p ~/.local/share/konsole
+cat > ~/.local/share/konsole/Default.profile <<'EOF'
+[Appearance]
+ColorScheme=BlackOnLightYellow
+Font=DejaVu Sans Mono,12,-1,5,50,0,0,0,0,0,Book
+
+[General]
+Name=Default
+Parent=FALLBACK/
+EOF
+
+mkdir -p ~/.config
+cat > ~/.config/konsolerc <<'EOF'
+[Desktop Entry]
+DefaultProfile=Default.profile
+EOF
+
+
 mkdir -p ~/.config/qt5ct
-cat >~/.config/qt5ct/qt5ct.conf <<'EOF'
+cat > ~/.config/qt5ct/qt5ct.conf <<'EOF'
 [Appearance]
 color_scheme_path=/usr/share/qt5ct/colors/airy.conf
 custom_palette=false
@@ -74,4 +92,5 @@ EOF
 set +x
 echo "FINISHED: rebooting in 5s"
 sleep 5
+
 sudo reboot now
