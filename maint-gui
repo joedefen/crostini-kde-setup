@@ -3,7 +3,6 @@
 """
 Requirements on Ubuntu:
   - sudo apt install python3-tk
-#  - pip3 install HTMLParser --user
   - pip3 install PySimpleGUI --user
 
 
@@ -51,7 +50,7 @@ layout = [
                 sg.Output(size=(120,36), font=('Monospace', 11))
             ]
          ]
-window = sg.Window('Linux Maint GUI', layout, location=(1957,1196))
+window = sg.Window('Linux Maint GUI', layout)
 # Event Loop to process "events" and get the "values" of the inputs
 while True:
     try:
