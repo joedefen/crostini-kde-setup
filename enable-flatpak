@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -x
+sudo apt -y install  platpak
+flatpak --user remote-add --if-not-exists flathup https://flathub.org/repo/flathub.flatpakrepo
+sudo apt -y install --no-install-recommends plasma-discover-backend-flatpak

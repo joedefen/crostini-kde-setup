@@ -6,7 +6,7 @@ BIN=~/.local/bin
 set -x
 
 mkdir -p $BIN
-for x in maint-gui update-linux refresh-icons; do
+for x in maint-gui update-linux refresh-icons enable-flatpak cleanup-flatpak; do
     cp $HERE/$x $BIN/.
 done
 MaintGUI=$(realpath $BIN/maint-gui)

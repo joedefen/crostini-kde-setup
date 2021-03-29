@@ -23,6 +23,7 @@ def run_cmd(cmd, window=None, timeout=None):
     @param window: the PySimpleGUI window that the output is going to (needed to do refresh on)
     @return: (return code from command, command output)
     """
+    print('\n\n      --------------------------')
     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     output = ''
     for line in p.stdout:
@@ -32,9 +33,10 @@ def run_cmd(cmd, window=None, timeout=None):
 	    window.refresh() if window else nop        # yes, a 1-line if, so shoot me
 
     retval = p.wait(timeout)
+    print('----------- DONE --------------\n')
     return (retval, output)
 
-sg.theme('BluePurple')
+sg.theme('Dark')
 # sg.theme('DarkAmber')   # Add a touch of color
 # All the stuff inside your window.
 history = []
@@ -42,6 +44,8 @@ layout = [
             [
                 sg.Button('Update Linux'),
                 sg.Button('Refresh Icons'),
+                sg.Button('Enable Flatpak'),
+                sg.Button('Cleanup Flatpak'),
             ],
             [
                 sg.Output(size=(120,36), font=('Monospace', 11))
@@ -61,13 +65,13 @@ while True:
             break
         # print('You entered ', pattern)
         if event == 'Update Linux':
-            print('\n\n      --------------------------')
             run_cmd('bash ~/.local/bin/update-linux', window)
-            print('----------- DONE --------------\n')
         elif event == 'Refresh Icons':
-            print('\n\n      --------------------------')
             run_cmd('bash ~/.local/bin/refresh-icons', window)
-            print('----------- DONE --------------\n')
+        elif event == 'Enable Flatpak':
+            run_cmd('bash ~/.local/bin/enable-flatpak', window)
+        elif event == 'Cleanup Flatpak':
+            run_cmd('bash ~/.local/bin/cleanup-flatpak', window)
 
     except Exception as exc:
         print('EXCEPTION:', traceback.format_exc())

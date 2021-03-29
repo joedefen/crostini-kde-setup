@@ -1,6 +1,6 @@
 # CROSTINI KDE SETUP #
 ### Purpose ###
-KDE apps tend to not work ideally on Chromebook Linux (Beta) (a.k.a., Crostini) unless certain KDE environment variables are set.
+KDE apps work best on Chromebook Linux (Beta) (a.k.a., Crostini) if certain KDE environment variables are set.
 Doing so is a bit tricky and undocumented, and this script automates the basic KDE environment setup.
 Once KDE is setup from the Terminal, you can run **Discover** from the Chromebook Launcher to add/remove more Linux applications.
 
@@ -10,9 +10,12 @@ Additionally, the setup script installs these core KDE apps that can be launched
 * **Kate** - an text editor with programming support for many languages.
 * **Okular** - a document viewier that handles PDFs, E-books, and many more document formats.
 
-And the custom maintenance tool, **MaintGUI**, which has two buttons:
+And the setup script installs **MaintGUI** for most maintenance needs which has these buttons:
 * **Update Linux** - updates your Linux and its software which you should run periodically
 * **Refresh Icons** - repairs icons for linux app when messed up.
+* **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository
+	* NOTE: that snaps do not work so well yet on Crostini and thus not yet enabled with this tool
+* **Cleanup Flatpak** - recovers disk space after uninstalling flatpak apps (which Discover does not do automatically)
 
 *Note: this script has been tested on Chromebook v88 and v89.*
 
