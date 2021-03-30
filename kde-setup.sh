@@ -6,10 +6,13 @@ BIN=~/.local/bin
 set -x
 
 mkdir -p $BIN
-for x in maint-gui update-linux refresh-icons enable-flatpak cleanup-flatpak; do
-    cp $HERE/$x $BIN/.
+for x in maint-gui maint-cli; do
+    ln -f $HERE/$x $BIN/.
 done
 MaintGUI=$(realpath $BIN/maint-gui)
+
+exit
+
 
 bash $BIN/update-linux
 
@@ -28,6 +31,15 @@ sudo apt -y install dolphin konsole kate okular
 sudo apt -y install --no-install-recommends python3-pip python3-tk
 sudo pip3 install PySimpleGUI
 sudo apt -y autoremove
+
+cat > ~/.vimrc <<EOF
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set autoindent
+EOF
+
 
 mkdir -p ~/.local/share/applications
 cat >~/.local/share/applications/MaintGUI.desktop <<EOF
@@ -89,7 +101,4 @@ geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x2\0\0\0\0\x2\xbb\0\0\x1\x13\0\0\x5\x99\0\
 EOF
 
 set +x
-echo "FINISHED: rebooting in 5s"
-sleep 5
-
-sudo reboot now
+echo "FINISHED: please restart Linux manually..."

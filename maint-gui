@@ -14,15 +14,16 @@ import subprocess
 
 import PySimpleGUI as sg
 
-def run_cmd(cmd, window=None, timeout=None):
+def run_subcmd(subcmd, window=None, timeout=None):
     nop = None
     """ run shell command
-    @param cmd: command to execute
+    @param subcmd: sub-command to execute
     @param timeout: timeout for command execution
     @param window: the PySimpleGUI window that the output is going to (needed to do refresh on)
     @return: (return code from command, command output)
     """
     print('\n\n      --------------------------')
+    cmd = 'bash ~/.local/bin/maint-cli ' + subcmd
     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     output = ''
     for line in p.stdout:
@@ -45,8 +46,12 @@ layout = [
                 sg.Button('Refresh Icons'),
                 sg.Button('Enable Flatpak'),
                 sg.Button('Cleanup Flatpak'),
-            ],
-            [
+            ], [
+                sg.Text("Set Debian Repository:"),
+                sg.Button('Stable'),
+                sg.Button('Testing'),
+                sg.Button('Unstable'),
+            ], [
                 sg.Output(size=(120,36), font=('Monospace', 11))
             ]
          ]
@@ -60,17 +65,24 @@ while True:
             pattern = list(value_dict.values())[0]
             wds = pattern.split()
         # print('\n\nevent:', event, 'wds:', wds)
-        if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
+        if event == sg.WIN_CLOSED or event == 'Cancel':
+            # if user closes window or clicks cancel
             break
         # print('You entered ', pattern)
         if event == 'Update Linux':
-            run_cmd('bash ~/.local/bin/update-linux', window)
+            run_subcmd('update-linux', window)
         elif event == 'Refresh Icons':
-            run_cmd('bash ~/.local/bin/refresh-icons', window)
+            run_subcmd('refresh-icons', window)
         elif event == 'Enable Flatpak':
-            run_cmd('bash ~/.local/bin/enable-flatpak', window)
+            run_subcmd('enable-flatpak', window)
         elif event == 'Cleanup Flatpak':
-            run_cmd('bash ~/.local/bin/cleanup-flatpak', window)
+            run_subcmd('cleanup-flatpak', window)
+        elif event == 'Stable':
+            run_subcmd('set-debian-stable', window)
+        elif event == 'Testing':
+            run_subcmd('set-debian-testing', window)
+        elif event == 'Unstable':
+            run_subcmd('set-debian-unstable', window)
 
     except Exception as exc:
         print('EXCEPTION:', traceback.format_exc())

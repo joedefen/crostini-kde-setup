@@ -1,4 +1,0 @@
-#!/bin/bash
-
-set -x
-flatpak uninstall --unused

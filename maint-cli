@@ -1,0 +1,109 @@
+#!/bin/bash
+# maint tool for crostini-KDE containter
+
+function update_linux() {
+    # upgrade the software in the crostini container
+
+    apt_cros="/etc/apt/sources.list.d/cros.list"
+    os_ver=$(cat /dev/.cros_milestone)
+    cur_ver=$(sed -r 's!^(.*cros-packages/)([0-9]+)\b(.*)$!\2!' $apt_cros)
+
+    set -x
+
+    if [ "$cur_ver" != "$os_ver" ]; then
+        sudo sed -i -E 's!^(.*cros-packages/)([0-9]+)\b(.*)$!\1'"${os_ver}"'\3!' $apt_cros
+    fi
+    sudo apt update
+    sudo apt -y --allow-downgrades upgrade
+    sudo apt -y --allow-downgrades dist-upgrade
+    sudo apt -y autoremove
+}
+
+function refresh_icons() {
+    # NOTE: this scripts hides apps from Crostini temporarily and then makes them
+    # visible.  This sometimes fixes screwed up Crostini applications.
+    # Do not interrupt this script.
+    trap '{ echo "Caught Ctrl-C ... but ignoring"; sleep 5; }' INT
+    set -x
+    sudo mv /usr/share/applications /usr/share/applications.tmp
+    sudo mv ~/.local/share/applications ~/.local/share/applications.tmp
+    sleep 5
+    sudo mv /usr/share/applications.tmp /usr/share/applications
+    sudo mv ~/.local/share/applications.tmp ~/.local/share/applications
+}
+
+function enable_flatpak() {
+    # Enable flatpak and configure Discover to use it.
+    set -x
+    sudo apt -y install flatpak
+    flatpak --user remote-add --if-not-exists flathup https://flathub.org/repo/flathub.flatpakrepo
+    sudo apt -y install --no-install-recommends plasma-discover-backend-flatpak
+}
+
+function cleanup_flatpak() {
+    # Remove unnecessary disk consumed by Flatpak particularly after
+    # removing applications with Discover.
+    set -x
+    flatpak uninstall --unused
+}
+
+function enable_snap() {
+    # Enable flatpak and configure Discover to use it.
+    set -x
+    sudo apt -y install libsquashfuse squashfuse fuse
+    sudo apt -y install snapd
+    # flatpak --user remote-add --if-not-exists flathup https://flathub.org/repo/flathub.flatpakrepo
+    sudo apt -y install --no-install-recommends plasma-discover-backend-snap
+}
+
+function set_debian_repository() {
+    # Switch to given debian release (i.e., buster, unstable, or testing)
+    # Passing "stable" means "buster" (for a while)
+    # Passing "sid" means "unstable" (permanently)
+    apt_list=/etc/apt/sources.list
+    case $1 in
+        buster|stable) src=buster ; pref=stable ;;
+        testing) src=testing ; pref=testing ;;
+        sid|unstable) src=unstable ; pref=unstable ;;
+        *) echo "Unknown Debian Repository: '$1'"; exit 1 ;;
+    esac
+    count=$(grep -c $src $apt_list)
+    if [ "x$count" != "x0" ]; then
+        echo "NOTE: Repository already set to $src"
+    fi
+
+    line1="deb https://deb.debian.org/debian $src main"
+    line2="deb https://deb.debian.org/debian-security $src/updates main"
+
+    echo $line1 | sudo tee $apt_list > /dev/null
+    if [ "$pref" == "stable" ] ; then
+        # only stable has security updates
+        echo $line2 | sudo tee -a $apt_list
+    fi
+
+    cat <<EOF | sudo tee /etc/apt/preferences >/dev/null
+Package: *
+Pin: release a=$pref
+Pin-Priority: 1001
+EOF
+
+    set -x
+    update_linux
+    echo "FINISHED: please restart Linux manually..."
+}
+
+
+case $1 in 
+    update-linux) update_linux;;
+    refresh-icons) refresh_icons;;
+    enable-flatpak) enable_flatpak;;
+    cleanup-flatpak) cleanup_flatpak;;
+    enable-snap) enable_snap;;
+    set-debian-stable) set_debian_repository stable;;
+    set-debian-testing) set_debian_repository testing;;
+    set-debian-unstable) set_debian_repository unstable;;
+    *) echo "main-cli: Unknown command: '$1'"; exit 1;;
+esac
+
+
+
