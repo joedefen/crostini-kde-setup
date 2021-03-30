@@ -16,6 +16,11 @@ And the setup script installs **MaintGUI** for most maintenance needs which has 
 * **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository
 	* NOTE: that snaps do not work so well yet on Crostini and thus not yet enabled with this tool
 * **Cleanup Flatpak** - recovers disk space after uninstalling flatpak apps (which Discover does not do automatically)
+* For changing the Debian repository:
+    * **Stable** - the default, oldest, most stable software.
+    * **Testing** - newer, less stable software; you may not be able to return to **Stable**.
+    * **Unstable** - newest, least stable software; you may not be able
+      to return to **Stable** or **Testing**..
 
 *Note: this script has been tested on Chromebook v88 and v89.*
 
