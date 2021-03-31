@@ -11,7 +11,7 @@ for x in maint-gui maint-cli; do
 done
 MaintGUI=$(realpath $BIN/maint-gui)
 
-bash $BIN/update-linux
+bash $BIN/maint-cli update-linux
 
 CONF=/etc/systemd/user/cros-garcon.service.d/cros-garcon-override.conf
 sudo tee -a $CONF >/dev/null <<'EOF'
@@ -19,6 +19,7 @@ Environment="QT_QPA_PLATFORMTHEME=qt5ct"
 Environment="XDG_CURRENT_DESKTOP=KDE"
 EOF
 
+sudo apt -y install apt-utils
 sudo apt -y install qt5ct breeze-icon-theme ttf-dejavu
 sudo apt -y install --no-install-recommends plasma-discover
 xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/apps/system-file-manager.png
@@ -31,6 +32,7 @@ sudo apt -y autoremove
 
 if [ ! -f ~/.vimrc ]; then
     cat > ~/.vimrc <<EOF
+syntax on
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
