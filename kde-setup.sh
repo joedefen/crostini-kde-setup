@@ -52,20 +52,20 @@ Icon=system-software-update
 EOF
 
 mkdir -p ~/.local/share/konsole
-cat > ~/.local/share/konsole/Default.profile <<'EOF'
+cat > ~/.local/share/konsole/LocalHost.profile <<'EOF'
 [Appearance]
 ColorScheme=BlackOnLightYellow
 Font=DejaVu Sans Mono,12,-1,5,50,0,0,0,0,0,Book
 
 [General]
-Name=Default
+Name=LocalHost
 Parent=FALLBACK/
 EOF
 
 mkdir -p ~/.config
 cat > ~/.config/konsolerc <<'EOF'
 [Desktop Entry]
-DefaultProfile=Default.profile
+DefaultProfile=LocalHost.profile
 EOF
 
 
