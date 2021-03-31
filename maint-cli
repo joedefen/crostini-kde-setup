@@ -16,8 +16,8 @@ function update_linux() {
         sudo sed -i -E 's!^(.*cros-packages/)([0-9]+)\b(.*)$!\1'"${os_ver}"'\3!' $apt_cros
     fi
     sudo apt update
-    sudo apt -y --allow-downgrades upgrade
-    sudo apt -y --allow-downgrades dist-upgrade
+    sudo apt -y --allow-downgrades --no-install-recommends upgrade
+    sudo apt -y --allow-downgrades --no-install-recommends dist-upgrade
     sudo apt -y autoremove
 }
 
