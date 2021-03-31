@@ -42,10 +42,10 @@ Launch **MaintGUI** for most maintenance needs which has these buttons:
     * **Unstable** - newest, least stable software; you may not be able
       to return to **Stable** or **Testing**..
 
-Advice for the Debian respository:
+Advice for changing the Debian respository to pick up more contemporary apps:
 * before changing repository, backup Linux as a precaution (or accept the possibility you must re-install Linux).
-* when changing respository, watch for errors and, and on failure, choose another until one succeeds (or restoring
-  a working Linux backup).
+* when changing respository, watch for errors and, and on failure, choose another until one succeeds (or restore
+  a backup of a working).
 * remain on **Stable** unless you require more current apps.
 * upgrading to **Unstable** is typically a better choice than **Testing**;  use **Testing** only if
   experimentally, you find it works best for your apps.
