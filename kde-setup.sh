@@ -11,9 +11,6 @@ for x in maint-gui maint-cli; do
 done
 MaintGUI=$(realpath $BIN/maint-gui)
 
-exit
-
-
 bash $BIN/update-linux
 
 CONF=/etc/systemd/user/cros-garcon.service.d/cros-garcon-override.conf
@@ -32,13 +29,15 @@ sudo apt -y install --no-install-recommends python3-pip python3-tk
 sudo pip3 install PySimpleGUI
 sudo apt -y autoremove
 
-cat > ~/.vimrc <<EOF
+if [ ! -f ~/.vimrc ]; then
+    cat > ~/.vimrc <<EOF
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 set autoindent
 EOF
+fi
 
 
 mkdir -p ~/.local/share/applications

@@ -8,6 +8,8 @@ function update_linux() {
     os_ver=$(cat /dev/.cros_milestone)
     cur_ver=$(sed -r 's!^(.*cros-packages/)([0-9]+)\b(.*)$!\2!' $apt_cros)
 
+    echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
+
     set -x
 
     if [ "$cur_ver" != "$os_ver" ]; then
