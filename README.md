@@ -36,16 +36,18 @@ Launch **MaintGUI** for most maintenance needs which has these buttons:
 * **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository
 	* NOTE: that snaps do not work so well yet on Crostini and thus not yet enabled with this tool
 * **Cleanup Flatpak** - recovers disk space after uninstalling flatpak apps (which Discover does not do automatically)
-* For changing the Debian repository:
-    * **Stable** - the default, oldest, most stable software.
-    * **Testing** - newer, less stable software; you may not be able to return to **Stable**.
+* For changing the Debian repository (from initially **Stable**):
+    * **Testing** - newer, less stable software; you cannot to return to **Stable**.
     * **Unstable** - newest, least stable software; you may not be able
-      to return to **Stable** or **Testing**..
+      to return to **Testing** and cannot return to **Stable**.
 
 Advice for changing the Debian respository to pick up more contemporary apps:
-* before changing repository, backup Linux as a precaution (or accept the possibility you must re-install Linux).
-* when changing respository, watch for errors and, and on failure, choose another until one succeeds (or restore
-  a backup of a working).
+* you are initially on Debian **Stable** after enabling Linux; if you leave **Stable**,
+  you cannot return by re-creating Linux or restoring a backup of Linux when on **Stable**.
+* before changing repository, backup Linux as a precaution
+  (or accept the possibility you must re-install Linux).
+* when changing respository, watch for errors and, and on failure, choose another
+  until one succeeds (or restore a backup of a working).
 * remain on **Stable** unless you require more current apps.
 * upgrading to **Unstable** is typically a better choice than **Testing**;  use **Testing** only if
   experimentally, you find it works best for your apps.

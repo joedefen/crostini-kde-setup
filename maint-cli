@@ -1,19 +1,28 @@
 #!/bin/bash
 # maint tool for crostini-KDE containter
 
+function get_cros_ver() {
+    cat /dev/.cros_milestone
+}
+function get_cros_pkg_ver() {
+    apt_cros="/etc/apt/sources.list.d/cros.list"
+    sed -r 's!^(.*cros-packages/)([0-9]+)\b(.*)$!\2!' $apt_cros
+}
+
+
 function update_linux() {
     # upgrade the software in the crostini container
 
+    cros_ver=$(get_cros_ver)
     apt_cros="/etc/apt/sources.list.d/cros.list"
-    os_ver=$(cat /dev/.cros_milestone)
-    cur_ver=$(sed -r 's!^(.*cros-packages/)([0-9]+)\b(.*)$!\2!' $apt_cros)
+    cros_pkg_ver=$(get_cros_pkg_ver)
 
     echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
 
     set -x
 
-    if [ "$cur_ver" != "$os_ver" ]; then
-        sudo sed -i -E 's!^(.*cros-packages/)([0-9]+)\b(.*)$!\1'"${os_ver}"'\3!' $apt_cros
+    if [ "$cros_ver" != "$cros_pkg_ver" ]; then
+        sudo sed -i -E 's!^(.*cros-packages/)([0-9]+)\b(.*)$!\1'"${cros_ver}"'\3!' $apt_cros
     fi
     sudo apt update
     sudo apt -y --allow-downgrades --no-install-recommends upgrade
@@ -41,6 +50,13 @@ function enable_flatpak() {
     flatpak --user remote-add --if-not-exists flathup https://flathub.org/repo/flathub.flatpakrepo
     sudo apt -y install --no-install-recommends plasma-discover-backend-flatpak
 }
+function is_flatpak_enabled() {
+    if which flatpak > /dev/null 2>&1; then
+        dpkg-query -W plasma-discover-backend-flatpak > /dev/null 2>&1
+    else
+        false
+    fi
+}
 
 function cleanup_flatpak() {
     # Remove unnecessary disk consumed by Flatpak particularly after
@@ -56,6 +72,14 @@ function enable_snap() {
     sudo apt -y install snapd
     # flatpak --user remote-add --if-not-exists flathup https://flathub.org/repo/flathub.flatpakrepo
     sudo apt -y install --no-install-recommends plasma-discover-backend-snap
+}
+
+function is_snap_enabled() {
+    if which snapctl > /dev/null 2>&1; then
+        dpkg-query -W plasma-discover-backend-snap > /dev/null 2>&1
+    else
+        false
+    fi
 }
 
 function set_debian_repository() {
@@ -96,8 +120,42 @@ EOF
     echo "FINISHED: please restart Linux manually..."
 }
 
+function get_debian_src() {
+    apt_list=/etc/apt/sources.list
+    if grep -c unstable $apt_list > /dev/null; then
+        echo unstable
+    elif grep -c testing $apt_list > /dev/null; then
+        echo testing
+    else
+        echo stable
+    fi
+}
+
+function get_state() {
+    cros_ver=$(get_cros_ver)
+    msg="STATUS: ChromeOS v$cros_ver"
+    cros_pkg_ver=$(get_cros_ver)
+    if [ "$cros_ver" != "$cros_pkg_ver" ]; then
+        msg="$msg; out-of-date pkgs (v$cros_pkg_ver)"
+    fi
+    debian_src=$(get_debian_src)
+    msg="$msg; on Debian $debian_src"
+#   if is_snap_enabled; then
+#       msg="$msg; Snap enabled"
+#   else
+#       msg="$msg; Snap disabled"
+#   fi
+    if is_flatpak_enabled; then
+        msg="$msg; Flatpak enabled"
+    else
+        msg="$msg; Flatpak disabled"
+    fi
+    echo $msg
+}
+
 
 case $1 in 
+    get-state) get_state;;
     update-linux) update_linux;;
     refresh-icons) refresh_icons;;
     enable-flatpak) enable_flatpak;;

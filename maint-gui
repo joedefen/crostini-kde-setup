@@ -8,21 +8,21 @@ Requirements on Ubuntu:
 
 """
 import re
+import time
 import sys
 import traceback
 import subprocess
 
 import PySimpleGUI as sg
 
-def run_subcmd(subcmd, window=None, timeout=None):
-    nop = None
+def run_primitive(subcmd, window=None, timeout=None):
     """ run shell command
     @param subcmd: sub-command to execute
     @param timeout: timeout for command execution
     @param window: the PySimpleGUI window that the output is going to (needed to do refresh on)
     @return: (return code from command, command output)
     """
-    print('\n\n      --------------------------')
+    nop = None
     cmd = 'bash ~/.local/bin/maint-cli ' + subcmd
     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     output = ''
@@ -33,8 +33,20 @@ def run_subcmd(subcmd, window=None, timeout=None):
 	    window.refresh() if window else nop        # yes, a 1-line if, so shoot me
 
     retval = p.wait(timeout)
-    print('----------- DONE --------------\n')
     return (retval, output)
+
+def run_prompt(window=None):
+    _, _ = run_primitive('get-state', window, None)
+    print('----------- READY --------------\n')
+
+def run_subcmd(subcmd, window=None, timeout=None):
+    """Run command with decoration"""
+    print('\n\n      --------------------------')
+    retval, output = run_primitive(subcmd, window, timeout)
+    print('----------- DONE --------------\n')
+    run_prompt(window)
+    return (retval, output)
+
 
 sg.theme('Dark')
 # sg.theme('DarkAmber')   # Add a touch of color
@@ -48,7 +60,7 @@ layout = [
                 sg.Button('Cleanup Flatpak'),
             ], [
                 sg.Text("Set Debian Repository:"),
-                sg.Button('Stable'),
+                # sg.Button('Stable'), # no deposit, no return
                 sg.Button('Testing'),
                 sg.Button('Unstable'),
             ], [
@@ -56,10 +68,16 @@ layout = [
             ]
          ]
 window = sg.Window('Linux Maint GUI', layout)
+
+
 # Event Loop to process "events" and get the "values" of the inputs
+timeout = 100 # ms, 1st timeout to get going
 while True:
     try:
-        event, value_dict = window.read()
+        event, value_dict = window.read(timeout)
+        if timeout:
+            run_prompt(window)
+            timeout = None
         pattern, wds = '', []
         if isinstance(value_dict, dict) and value_dict:
             pattern = list(value_dict.values())[0]
