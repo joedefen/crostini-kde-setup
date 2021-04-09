@@ -153,6 +153,14 @@ function get_state() {
     echo $msg
 }
 
+function disable_libreoffice_file_locking() {
+    set -x
+    if which soffice > /dev/null; then
+        soffice=$(which soffice)
+        sudo sed -i -E 's!^([^#].*FILE_LOCKING.*)$!# \1!' $soffice
+    fi
+}
+
 
 case $1 in 
     get-state) get_state;;
@@ -164,6 +172,7 @@ case $1 in
     set-debian-stable) set_debian_repository stable;;
     set-debian-testing) set_debian_repository testing;;
     set-debian-unstable) set_debian_repository unstable;;
+    disable-libreoffice-file-locking) disable_libreoffice_file_locking;;
     *) echo "main-cli: Unknown command: '$1'"; exit 1;;
 esac
 

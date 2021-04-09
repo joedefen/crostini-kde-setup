@@ -59,6 +59,7 @@ layout = [
                 sg.Button('Enable Flatpak'),
                 sg.Button('Cleanup Flatpak'),
             ], [
+                sg.Button('Disable LibreOffice File Locking'),
                 sg.Text("Set Debian Repository:"),
                 # sg.Button('Stable'), # no deposit, no return
                 sg.Button('Testing'),
@@ -95,6 +96,8 @@ while True:
             run_subcmd('enable-flatpak', window)
         elif event == 'Cleanup Flatpak':
             run_subcmd('cleanup-flatpak', window)
+        elif event == 'Disable LibreOffice File Locking':
+            run_subcmd('disable-libreoffice-file-locking', window)
         elif event == 'Stable':
             run_subcmd('set-debian-stable', window)
         elif event == 'Testing':

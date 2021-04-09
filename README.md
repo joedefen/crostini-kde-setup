@@ -9,8 +9,12 @@ Once KDE is setup from the Terminal, you can launch:
 Additionally, the setup script installs these core KDE apps that can be launched from you Chromebook launcher:
 * **Dolphin** - a file manager including SFTP enabling you to manage the local and remote file systems.
 * **Konsole** - a terminal application with profiles to use locally and for SSH session to remote systems.
-* **Kate** - an text editor with programming support for many languages.
 * **Okular** - a document viewier that handles PDFs, E-books, and many more document formats.
+* **Kate** - an text editor with programming support for many languages.
+* **Kate** - an text editor with programming support for many languages.
+* **Geany** - an alternative lightweight text editor.
+    * Unlike **Kate**, **Geany** can be run with sudo (e.g., to edit system files with a GUI editor)
+    * To run a sudo'ed GUI app, like, **Geany**, from Terminal, first run `xhost *`
 
 *Note: this script has been tested on Chromebook v88 and v89.*
 
@@ -36,6 +40,11 @@ Launch **MaintGUI** for most maintenance needs which has these buttons:
 * **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository
 	* NOTE: that snaps do not work so well yet on Crostini and thus not yet enabled with this tool
 * **Cleanup Flatpak** - recovers disk space after uninstalling flatpak apps (which Discover does not do automatically)
+* **Disable LibreOffice File Locking** - for LibreOffice to work on Google Drive, after installing LibreOffic, run  this to *partly* disable its incompatible file locking. You must also:
+    * be on a relatively up-to-date version of LibreOffice (e.g., via change Debian repository to **Unstable**.)
+    * in LibreOffice's Tools > Options > LibreOffice > Advanced > Open Expert Configuration, set:
+        * *UseLocking* to false
+        * *UseDocumentOOoLockFile* to false
 * For changing the Debian repository (from initially **Stable**):
     * **Testing** - newer, less stable software; you cannot to return to **Stable**.
     * **Unstable** - newest, least stable software; you may not be able
