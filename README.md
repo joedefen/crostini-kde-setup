@@ -11,7 +11,6 @@ Additionally, the setup script installs these core KDE apps that can be launched
 * **Konsole** - a terminal application with profiles to use locally and for SSH session to remote systems.
 * **Okular** - a document viewier that handles PDFs, E-books, and many more document formats.
 * **Kate** - an text editor with programming support for many languages.
-* **Kate** - an text editor with programming support for many languages.
 * **Geany** - an alternative lightweight text editor.
     * Unlike **Kate**, **Geany** can be run with sudo (e.g., to edit system files with a GUI editor)
     * To run a sudo'ed GUI app, like, **Geany**, from Terminal, first run `xhost *`
@@ -36,7 +35,7 @@ Additionally, the setup script installs these core KDE apps that can be launched
 Launch **MaintGUI** for most maintenance needs which has these buttons:
 * **Update Linux** - updates your Linux and its software which you should run periodically
   and after Chromebook major version updates.
-* **Refresh Icons** - repairs icons for linux app when messed up.
+* **Refresh Icons** - repairs icons for linux apps when messed up.
 * **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository
 	* NOTE: that snaps do not work so well yet on Crostini and thus not yet enabled with this tool
 * **Cleanup Flatpak** - recovers disk space after uninstalling flatpak apps (which Discover does not do automatically)
@@ -52,7 +51,7 @@ Launch **MaintGUI** for most maintenance needs which has these buttons:
 
 Advice for changing the Debian respository to pick up more contemporary apps:
 * you are initially on Debian **Stable** after enabling Linux; if you leave **Stable**,
-  you cannot return by re-creating Linux or restoring a backup of Linux when on **Stable**.
+  you can return only by re-creating Linux or restoring a backup of Linux when on **Stable**.
 * before changing repository, backup Linux as a precaution
   (or accept the possibility you must re-install Linux).
 * when changing respository, watch for errors and, and on failure, choose another
@@ -66,7 +65,7 @@ Advice for changing the Debian respository to pick up more contemporary apps:
 	* Sometimes the Linux container cannot be restarted; see [Moderators, can we get a pin on Error 51 and other Linux won't start situations?(Reddit)](https://www.reddit.com/r/Crostini/comments/ljdbck/moderators_can_we_get_a_pin_on_error_51_and_other/). So,
 		* You may be able to set a flag (chrome://flags/#crostini-reset-lxd-db) to get it working.
 		* If not repairable, you may be able to recover your data.
-		* The last restor fix is to remove Linux (Beta) and (1) then renable it and do the setup or (2) restore from backup [Restore your Linux (Beta)](https://support.google.com/chromebook/answer/9592813?hl=en)
+		* The last restort fix is to remove Linux (Beta) and (1) then renable it and do the setup or (2) restore from backup [Restore your Linux (Beta)](https://support.google.com/chromebook/answer/9592813?hl=en)
 	* Protect yourself by doing regular backups (to an SD card if short on internal disk space).  See [Back up & restore your Linux (Beta) files and apps](https://support.google.com/chromebook/answer/9592813?hl=en)
 * **You can vary UI settings.** The script establishes the Breeze Icon Theme.  After setup, from **Terminal** you can run `qt5ct` to vary some user interface settings.
 * **Change Terminal Settings.** If you wish to customize the terminal (e.g., change colors), then type CTRL-SHIFT-P in the Terminal window to get the Settings popup window.
