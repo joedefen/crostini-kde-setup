@@ -63,6 +63,7 @@ function cleanup_flatpak() {
     # removing applications with Discover.
     set -x
     flatpak uninstall --unused
+    flatpak list
 }
 
 function enable_snap() {
