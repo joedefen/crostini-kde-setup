@@ -6,6 +6,8 @@ Once KDE is setup from the Terminal, you can launch:
 * **Discover** from the Chromebook Launcher to add/remove more Linux applications.
 * **MaintGUI** for most maintenance needs (described below).
 
+![KDEApps](images/Screenshot-KDEApps-2021-12-07.png)
+
 Additionally, the setup script installs these core KDE apps that can be launched from you Chromebook launcher:
 * **Dolphin** - a file manager including SFTP enabling you to manage the local and remote file systems.
 * **Konsole** - a terminal application with profiles to use locally and for SSH session to remote systems.
@@ -31,6 +33,8 @@ Additionally, the setup script installs these core KDE apps that can be launched
 1. Launch **Discover** to browse for available apps, install apps, launch installed apps, and remove unwanted apps.
 
 ### MaintGUI Instructions ###
+
+![KDEApps](images/Screenshot-Maint-GUI-2021-12-07.png)
 
 Launch **MaintGUI** for most maintenance needs which has these buttons:
 * **Update Linux** - updates your Linux and its software which you should run periodically
