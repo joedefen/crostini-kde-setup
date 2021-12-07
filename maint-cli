@@ -24,7 +24,7 @@ function update_linux() {
     if [ "$cros_ver" != "$cros_pkg_ver" ]; then
         sudo sed -i -E 's!^(.*cros-packages/)([0-9]+)\b(.*)$!\1'"${cros_ver}"'\3!' $apt_cros
     fi
-    sudo apt update
+    sudo apt -y update
     sudo apt -y --allow-downgrades --no-install-recommends upgrade
     sudo apt -y --allow-downgrades --no-install-recommends dist-upgrade
     sudo apt -y autoremove
