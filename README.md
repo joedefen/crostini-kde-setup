@@ -17,7 +17,7 @@ Additionally, the setup script installs these core KDE apps that can be launched
 * **Konsole** - a terminal application with profiles to use locally and for SSH session to remote systems.
 * **Okular** - a document viewier that handles PDFs, E-books, and many more document formats.
 * **Kate** - an text editor with programming support for many languages.
-* **Geany** - an alternative lightweight text editor.
+* **Geany** - an alternative, non-KDE lightweight text editor.
     * Unlike **Kate**, **Geany** can be run with sudo (e.g., to edit system files with a GUI editor)
     * To run a sudo'ed GUI app, like, **Geany**, from Terminal, first run `xhost +` on a separate line.
 
