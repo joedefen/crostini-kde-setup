@@ -4,7 +4,7 @@ KDE apps work best on Chromebook Linux (a.k.a., Crostini) if certain KDE environ
 Doing so is a bit tricky and undocumented, and this script automates the basic KDE environment setup.
 Once KDE is setup from the Terminal, you can launch:
 * **Discover** from the Chromebook Launcher to add/remove more Linux applications.
-* **MaintGUI** for most maintenance needs (described below).
+* **MaintGUI** which provides a one-button click for the very typical maintenance needs (described below).
 
 ![KDEApps](images/Screenshot-KDEApps-2021-12-07.png)
 
