@@ -1,9 +1,14 @@
 # CROSTINI KDE SETUP #
 ### Purpose ###
+With only two commands, install key apps from KDE, one of the most populur Linux Desktops
+due to it efficiency, customizability, and good looks.
+For newbies, most importantly, it installs **Discover** which is an elegant, easy-to-use
+"app store" for Linux apps and nearly every apps is free.
+
 KDE apps work best on Chromebook Linux (a.k.a., Crostini) if certain KDE environment variables are set.
 Doing so is a bit tricky and undocumented, and this script automates the basic KDE environment setup.
-Once KDE is setup from the Terminal, you can launch:
-* **Discover** from the Chromebook Launcher to add/launch/remove more Linux applications from a GUI.
+Once the core KDE apps are installed from the Terminal, use the Chromebook launger to run:
+* **Discover** add/launch/remove more Linux applications from a GUI.
 * **MaintGUI** which provides a one-button click for the very typical maintenance needs (described below).
 
 For Linux newbies, these scripts help get you started with a minimal of command line interaction;
@@ -12,16 +17,16 @@ this scripts makes painless and certain the install of the KDE core apps (and mo
 
 ![KDEApps](images/Screenshot-KDEApps-2021-12-07.png)
 
-The setup script installs these core KDE apps that can be launched from you Chromebook launcher:
+The setup script additionally installs these core KDE apps that can be launched from you Chromebook launcher:
 * **Dolphin** - a file manager including SFTP enabling you to manage the local and remote file systems.
   * Search for "Dolphin" in **Discover** to add plugins that extend its functionality.
   * **Dolphin** can be further extended by installing **K4DirStat**, **KDiff3**, etc., and their service menus from **Discover**.
-* **Konsole** - a terminal application with profiles to use locally and for SSH session to remote systems
+* **Konsole** - a terminal emulator with profiles to use locally and for SSH session to remote systems
 * **Okular** - a document viewer that supports PDFs and many other document formats.
 	* Search for "Okular" in **Discover** to find/install its additional backends for markdown, Epub, and others. 
 * **Kate** - an text editor with programming support for many languages.
 
-Additionally, it installs:
+And, it installs:
 * **Geany** - an alternative, non-KDE lightweight text editor.
     * Unlike **Kate**, **Geany** can be run with sudo (e.g., to edit system files with a GUI editor)
     * To run a sudo'ed GUI app, like, **Geany**, from Terminal, first run `xhost +` on a separate line.
