@@ -34,7 +34,7 @@ And, it installs:
 *Note: this script has been tested on Chromebook v88 through v94.*
 
 ---
-### Installation Instructions ###
+### "Normal" Installation Instructions ###
 
 1. In the Chromebook settings (under Advanced / Developers), enable Linux (the default disk size is OK). See [Set up Linux on Your Chromebook](https://support.google.com/chromebook/answer/9145439?p=chromebook_linuxapps&b=hatch-signed-mp-v6keys&visit_id=637506510150436611-3956044416&rd=1)
 1. After enabling Linux, a "Terminal" will open;  then enter these commands (one per line):
@@ -42,11 +42,20 @@ And, it installs:
 	* `bash crostini-kde-setup/kde-setup.sh`
 		* *Note: to enter the commands, you may copy each line in Chrome and right-click within the Terminal to paste, saving typing and avoiding typos.*
 1. After the script completes (and it will take 10 minutes or so), **restart your container** (i.e., *right-click* the Terminal icon on the shelf and select *Shut down Linux*; then launch *Terminal* again).
+
+### "Starter Image" Installation Instructions ###
+NOTE: this is **requires** an Intel/AMD processor based Chromebook the x86 instruction set.  This method might be best if minimal install time is crucial or just wishing to trial the system before the "normal" install.
+1. From [https://tinyurl.com/Crostini-KDE-Setup-Images](https://tinyurl.com/Crostini-KDE-Setup-Images), pick and download one of the image files.
+	* Note the name includes the Debian Repository and the Chrome OS major version (e.g., "crostini-kde-unstable-v94-2021-12-11.tini" indicate Debian Unstable repository and the image was built on Chrome OS version 94.
+2. Using the procedure in [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en), "restore" the downloaded image file.
+
+---
+### Post Install Instructions ###
 1. In Terminal, optionally remove the install script by running:
 	* `rm -rf ~/crostini-kde-setup`
-3. Find your installed Linux apps in the 'Linux app' folder of your Chromebook App Drawer (or type its name, e.g., "Discover", into the Launcher search dialog and hit return when it is first or click its icon).
-4. In particular, launch **Discover** to browse for available apps, install apps, launch installed apps, and remove unwanted apps.
-5. After every Chromebook update (which occur about monthly), we suggest you launch **MaintGUI** and click **Update Linux** to ensure your container is running the most aggreeable software for your Chromebook).
+1. Find your installed Linux apps in the 'Linux app' folder of your Chromebook App Drawer (or type its name, e.g., "Discover", into the Launcher search dialog and hit return when it is first or click its icon).
+1. In particular, launch **Discover** to browse for available apps, install apps, launch installed apps, and remove unwanted apps.
+1. After every Chromebook update (which occur about monthly), we suggest you launch **MaintGUI** and click **Update Linux** to ensure your container is running the most aggreeable software for your Chromebook).
 
 ---
 ### MaintGUI Instructions ###
