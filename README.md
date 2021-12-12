@@ -46,14 +46,16 @@ Follow only one set of install instructions, either "Normal" (these) or "Starter
 
 ---
 ### "Starter Image" Installation Instructions ###
-NOTE:
-* this is **requires** an Intel/AMD processor based Chromebook the x86 instruction set.  This method might be best if minimal install time is crucial or just wishing to trial the system before the "normal" install.ou
-* if you did the "Normal" installation, then do NOT do this installation unless you had difficultand wish to completely replace your current container.
+NOTES:
+* this is **requires** an Intel/AMD processor based Chromebook using the x86 instruction set.  This method might be best if minimal install time is crucial or just wishing to trial the system before the "normal" install.ou
+* if you did the "Normal" installation, then do NOT do this installation unless you had difficulty and wish to completely replace your current container.
+* the user in the container is named "beta" (which affects how you do a few things).
+* the restored container size is only 6 GB and you may need to increase that soon depending on your needs.
 
 
-1. From [https://tinyurl.com/Crostini-KDE-Setup-Images](https://tinyurl.com/Crostini-KDE-Setup-Images), pick and download one of the image files.
-	* Note the name includes the Debian Repository and the Chrome OS major version (e.g., "crostini-kde-unstable-v94-2021-12-11.tini" indicate Debian Unstable repository and the image was built on Chrome OS version 94.
-2. Using the procedure in [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en), "restore" the downloaded image file.
+1. From [tinyurl.com/Crostini-KDE-Setup-Images](https://tinyurl.com/Crostini-KDE-Setup-Images), pick and download one of the backup image files.
+	* Note the name includes the Debian Repository and the Chrome OS major version (e.g., "crostini-kde-unstable-v94-2021-12-11.tini" indicate Debian Unstable repository and that the image was built on Chrome OS version 94.
+2. Using the procedure in [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en), "restore" the downloaded backup image file.
 
 ---
 ### Post Install Instructions ###
@@ -61,7 +63,7 @@ NOTE:
 	* `rm -rf ~/crostini-kde-setup`
 1. Find your installed Linux apps in the 'Linux app' folder of your Chromebook App Drawer (or type its name, e.g., "Discover", into the Launcher search dialog and hit return when it is first or click its icon).
 1. In particular, launch **Discover** to browse for available apps, install apps, launch installed apps, and remove unwanted apps.
-1. After every Chromebook update (which occur about monthly), we suggest you launch **MaintGUI** and click **Update Linux** to ensure your container is running the most aggreeable software for your Chromebook).
+1. After every Chromebook update (which occur about monthly), we suggest you launch **MaintGUI** and click **Update Linux** to ensure your container is running the most aggreeable software for your Chromebook).  Do this immediately if you used the "Starter Image" install method.
 
 ---
 ### MaintGUI Instructions ###
