@@ -35,6 +35,7 @@ And, it installs:
 
 ---
 ### "Normal" Installation Instructions ###
+Follow only one set of install instructions, either "Normal" (these) or "Starter Image" Installation (in next section).
 
 1. In the Chromebook settings (under Advanced / Developers), enable Linux (the default disk size is OK). See [Set up Linux on Your Chromebook](https://support.google.com/chromebook/answer/9145439?p=chromebook_linuxapps&b=hatch-signed-mp-v6keys&visit_id=637506510150436611-3956044416&rd=1)
 1. After enabling Linux, a "Terminal" will open;  then enter these commands (one per line):
@@ -43,8 +44,13 @@ And, it installs:
 		* *Note: to enter the commands, you may copy each line in Chrome and right-click within the Terminal to paste, saving typing and avoiding typos.*
 1. After the script completes (and it will take 10 minutes or so), **restart your container** (i.e., *right-click* the Terminal icon on the shelf and select *Shut down Linux*; then launch *Terminal* again).
 
+---
 ### "Starter Image" Installation Instructions ###
-NOTE: this is **requires** an Intel/AMD processor based Chromebook the x86 instruction set.  This method might be best if minimal install time is crucial or just wishing to trial the system before the "normal" install.
+NOTE:
+* this is **requires** an Intel/AMD processor based Chromebook the x86 instruction set.  This method might be best if minimal install time is crucial or just wishing to trial the system before the "normal" install.ou
+* if you did the "Normal" installation, then do NOT do this installation unless you had difficultand wish to completely replace your current container.
+
+
 1. From [https://tinyurl.com/Crostini-KDE-Setup-Images](https://tinyurl.com/Crostini-KDE-Setup-Images), pick and download one of the image files.
 	* Note the name includes the Debian Repository and the Chrome OS major version (e.g., "crostini-kde-unstable-v94-2021-12-11.tini" indicate Debian Unstable repository and the image was built on Chrome OS version 94.
 2. Using the procedure in [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en), "restore" the downloaded image file.
