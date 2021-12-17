@@ -3,7 +3,7 @@
 With only two commands, install key apps from KDE, one of the most populur Linux Desktops
 due to it efficiency, customizability, and good looks.
 For newbies, most importantly, it installs **Discover** which is an elegant, easy-to-use
-"app store" for Linux apps and nearly every apps is free.
+"app store" for Linux apps and nearly every app is free.
 
 KDE apps work best on Chromebook Linux (a.k.a., Crostini) if certain KDE environment variables are set.
 Doing so is a bit tricky and undocumented, and this script automates the basic KDE environment setup.
