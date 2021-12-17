@@ -47,9 +47,9 @@ Follow only one set of install instructions, either "Normal" (these) or "Starter
 ---
 ### "Starter Image" Installation Instructions ###
 NOTES:
-* this is **requires** an Intel/AMD processor based Chromebook using the x86 instruction set.  This method might be best if minimal install time is crucial or just wishing to trial the system before the "normal" install.ou
+* this install method **requires** an Intel/AMD processor Chromebook using the x86 instruction set.  This method can minimize install time/efforts for trials, etc.
 * if you did the "Normal" installation, then do NOT do this installation unless you had difficulty and wish to completely replace your current container.
-* the user in the container is named "beta" (which affects how you do a few things).
+* the "user" in the container is named "beta" (which affects how you do a few things).
 * the restored container size is only 6 GB and you may need to increase that soon depending on your needs.
 
 
