@@ -46,7 +46,11 @@ Follow only one set of install instructions, either "Normal" (these) or "Starter
 
 ---
 ### "Starter Image" Installation Instructions ###
+**BEWARE: backup/restore seems mostly broken in v96;  until further notice, use "Normal" installation ONLY.**
+
+<strike>
 NOTES:
+	
 * this install method **requires** an Intel/AMD processor Chromebook using the x86 instruction set.  This method can minimize install time/efforts for trials, etc.
 * if you did the "Normal" installation, then do NOT do this installation unless you had difficulty and wish to completely replace your current container.
 * the "user" in the container is named "beta" (which affects how you do a few things).
@@ -56,6 +60,7 @@ NOTES:
 1. From [tinyurl.com/Crostini-KDE-Setup-Images](https://tinyurl.com/Crostini-KDE-Setup-Images), pick and download one of the backup image files.
 	* Note the name includes the Debian Repository and the Chrome OS major version (e.g., "crostini-kde-unstable-v94-2021-12-11.tini" indicate Debian Unstable repository and that the image was built on Chrome OS version 94.
 2. Using the procedure in [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en), "restore" the downloaded backup image file.
+</strike>
 
 ---
 ### Post Install Instructions ###
