@@ -46,25 +46,28 @@ Follow only one set of install instructions, either "Normal" (these) or "Starter
 
 ---
 ### "Starter Image" Installation Instructions ###
-**BEWARE: backup/restore seems mostly broken in v96;  until further notice, use "Normal" installation ONLY.**
 
-<strike>
-NOTES:
+#### Notes for "Starter Image" Install
 	
 * this install method **requires** an Intel/AMD processor Chromebook using the x86 instruction set.  This method can minimize install time/efforts for trials, etc.
 * if you did the "Normal" installation, then do NOT do this installation unless you had difficulty and wish to completely replace your current container.
 * the "user" in the container is named "beta" (which affects how you do a few things).
 * the restored container size is only 6 GB and you may need to increase that soon depending on your needs.
 
-
+#### Steps for "Starter Image" Install
+1. Follow the **"Turn off Linux"** instructions in [Set up Linux on your Chromebook](https://support.google.com/chromebook/answer/9145439?hl=en).
+1. Enter "Crosh" (type CTRL-ALT-T), and run `vmc destroy termina`.
+1. Enter "chrome://flags" into Chrome's Omnibar, search for "crostini", and ensure all settings are "Default".
+1. Power down your Chromebook and restart it.
 1. From [tinyurl.com/Crostini-KDE-Setup-Images](https://tinyurl.com/Crostini-KDE-Setup-Images), pick and download one of the backup image files.
 	* Note the name includes the Debian Repository and the Chrome OS major version (e.g., "crostini-kde-unstable-v94-2021-12-11.tini" indicate Debian Unstable repository and that the image was built on Chrome OS version 94.
-2. Using the procedure in [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en), "restore" the downloaded backup image file.
+1. Right-click the downloaded file and select, "Replace your Linux files and apps with a previous backup."
+	* To be sure, **avoid** the restore procedure in [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en).
 </strike>
 
 ---
 ### Post Install Instructions ###
-1. In Terminal, optionally remove the install script by running:
+1. In Terminal, optionally remove the install script by:
 	* `rm -rf ~/crostini-kde-setup`
 1. Find your installed Linux apps in the 'Linux app' folder of your Chromebook App Drawer (or type its name, e.g., "Discover", into the Launcher search dialog and hit return when it is first or click its icon).
 1. In particular, launch **Discover** to browse for available apps, install apps, launch installed apps, and remove unwanted apps.
