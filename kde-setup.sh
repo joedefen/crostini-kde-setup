@@ -3,7 +3,7 @@
 HERE=$(dirname $(realpath $0))
 BIN=~/.local/bin
 
-set -x
+set -x -e
 
 mkdir -p $BIN
 for x in maint-gui maint-cli; do
@@ -20,11 +20,14 @@ Environment="XDG_CURRENT_DESKTOP=KDE"
 EOF
 
 sudo apt -y install apt-utils
-sudo apt -y install qt5ct breeze-icon-theme ttf-dejavu
+sudo apt -y install qt5ct breeze-icon-theme
+# NOTE: was ttf-dejavu before v96
+sudo apt -y install fonts-dejavu
 sudo apt -y install --no-install-recommends plasma-discover
-xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/apps/system-file-manager.png
-xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/apps/system-software-update.png
-xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/512x512/apps/utilities-terminal.png
+# NOTE: These moved from XxX/apps to XxX/legacy in v96
+xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-file-manager.png
+xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-software-update.png
+xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/512x512/*/utilities-terminal.png
 sudo apt -y install dolphin konsole kate okular geany
 sudo apt -y install --no-install-recommends python3-pip python3-tk
 sudo pip3 install PySimpleGUI
