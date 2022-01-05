@@ -76,15 +76,17 @@ Follow only one set of install instructions, either "Normal" (these) or "Starter
 ---
 ### MaintGUI Instructions ###
 
-![KDEApps](images/Screenshot-Maint-GUI-2021-12-07.png)
+![KDEApps](images/Screenshot-MaintGUI-2022-01-05.png)
 
 Launch **MaintGUI** for most maintenance needs which has these buttons:
 * **Update Linux** - updates your Linux and its software which you should run periodically
   and after Chromebook major version updates.
 * **Refresh Icons** - repairs icons for linux apps when messed up.
-* **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository
-	* NOTE: that snaps do not work so well yet on Crostini and thus not yet enabled with this tool
+* **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository.  NOTES:
+    * *you must reboot to take effect.*
+	* snaps do not work well yet on Crostini and thus not yet enabled with this tool.
 * **Cleanup Flatpak** - recovers disk space after uninstalling flatpak apps (which Discover does not do automatically)
+* **Purge Flatpak** - removes **ALL** install flatpak apps, the flatpak core tools, and **Discover's** awareness of flatpak; i.e., you cannot install flatpaks until re-enabled.
 * **Disable LibreOffice File Locking** - for LibreOffice to work on Google Drive, after installing LibreOffic, run  this to *partly* disable its incompatible file locking. You must also:
     * be on a relatively up-to-date version of LibreOffice (e.g., via change Debian repository to **Unstable**.)
     * in LibreOffice's Tools > Options > LibreOffice > Advanced > Open Expert Configuration, set:

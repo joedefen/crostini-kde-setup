@@ -49,6 +49,7 @@ function enable_flatpak() {
     sudo apt -y install flatpak
     flatpak --user remote-add --if-not-exists flathup https://flathub.org/repo/flathub.flatpakrepo
     sudo apt -y install --no-install-recommends plasma-discover-backend-flatpak
+    echo -e "\n\n======> FINISHED: please restart Linux manually..."
 }
 function is_flatpak_enabled() {
     if which flatpak > /dev/null 2>&1; then
@@ -58,12 +59,30 @@ function is_flatpak_enabled() {
     fi
 }
 
+function purge_flatpak() {
+    if  is_flatpak_enabled; then
+        set -x 
+        flatpak uninstall --all -y
+        sudo apt -y purge flatpak plasma-discover-backend-flatpak
+        sudo apt -y autoremove
+        echo -e "\n\n======> FINISHED: please restart Linux manually..."
+    else
+        echo -e "\nNOTE: nothing to do; flatpak is disabled"
+    fi
+
+}
+
+
 function cleanup_flatpak() {
     # Remove unnecessary disk consumed by Flatpak particularly after
     # removing applications with Discover.
-    set -x
-    flatpak uninstall --unused
-    flatpak list
+    if  is_flatpak_enabled; then
+        set -x
+        flatpak uninstall --unused -y
+        flatpak list
+    else
+        echo -e "\nNOTE: nothing to do; flatpak is disabled"
+    fi
 }
 
 function enable_snap() {
@@ -118,7 +137,7 @@ EOF
     update_linux
         # note: after switching/upgrading PySimpleGUI may be uninstalled
     sudo pip3 install PySimpleGUI
-    echo "FINISHED: please restart Linux manually..."
+    echo -e "\n\n======> FINISHED: please restart Linux manually..."
 }
 
 function get_debian_src() {
@@ -168,6 +187,7 @@ case $1 in
     update-linux) update_linux;;
     refresh-icons) refresh_icons;;
     enable-flatpak) enable_flatpak;;
+    purge-flatpak) purge_flatpak;;
     cleanup-flatpak) cleanup_flatpak;;
     enable-snap) enable_snap;;
     set-debian-stable) set_debian_repository stable;;
