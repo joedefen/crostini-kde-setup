@@ -60,7 +60,7 @@ Follow only one set of install instructions, either "Normal" (these) or "Starter
 1. Enter "chrome://flags" into Chrome's Omnibar, search for "crostini", and ensure all settings are "Default".
 1. Power down your Chromebook and restart it.
 1. From [tinyurl.com/Crostini-KDE-Setup-Images](https://tinyurl.com/Crostini-KDE-Setup-Images), pick and download one of the backup image files.
-	* Note the name includes the Debian Repository and the Chrome OS major version (e.g., "crostini-kde-unstable-v94-2021-12-11.tini" indicate Debian Unstable repository and that the image was built on Chrome OS version 94.
+	* Note the name includes the Debian Repository and the Chrome OS major version (e.g., "crostini-kde-unstable-v94-2021-12-11.tini" indicate Debian Unstable repository and that the image was built on Chrome OS version 94).
 1. Right-click the downloaded file and select, "Replace your Linux files and apps with a previous backup."
 	* To be sure, **avoid** the restore procedure in [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en).
 </strike>
@@ -82,9 +82,12 @@ Launch **MaintGUI** for most maintenance needs which has these buttons:
 * **Update Linux** - updates your Linux and its software which you should run periodically
   and after Chromebook major version updates.
 * **Refresh Icons** - repairs icons for linux apps when messed up.
-* **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository.  NOTES:
-    * *you must reboot to take effect.*
-	* snaps do not work well yet on Crostini and thus not yet enabled with this tool.
+* **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository.  **After enabling Flapak**:
+    * Press Ctrl+Alt+T (when hovering over a Chrome window). A "crosh" terminal window will open (this is NOT the crostini terminal).
+    * Type `vsh termina` and press enter.
+    * Type `lxc config set penguin security.nesting true` and press enter.
+    * Twice type `exit` and press enter (to exit termina and crosh).
+    * Restart crostini (i.e., right-click on Terminal in the shelf, and click "Shut down Linux").
 * **Cleanup Flatpak** - recovers disk space after uninstalling flatpak apps (which Discover does not do automatically)
 * **Purge Flatpak** - removes **ALL** install flatpak apps, the flatpak core tools, and **Discover's** awareness of flatpak; i.e., you cannot install flatpaks until re-enabled.
 * **Disable LibreOffice File Locking** - for LibreOffice to work on Google Drive, after installing LibreOffic, run  this to *partly* disable its incompatible file locking. You must also:
@@ -96,6 +99,9 @@ Launch **MaintGUI** for most maintenance needs which has these buttons:
     * **Testing** - newer, less stable software; you cannot to return to **Stable**.
     * **Unstable** - newest, least stable software; you may not be able
       to return to **Testing** and cannot return to **Stable**.
+ 
+**NOTE**: **Snaps do not work well** (e.g., see [Yes, you can install Snap packages on Chrome OS, but it’s not great](https://chromeunboxed.com/install-snap-packages-chromebook-crostini-linux-how-to/)), and thus no Snap buttons are provided lest it leads you down that rathole.
+ 
 #### Which Debian Repository Should You Use?"
 Debian is famous for lagging well behind the lastest app releases, but **MaintGUI** can remedy that.  Our advice:
 * remain on **Stable** unless you require more current apps although **Unstable** and **Testing** are not nearly as risky as their names suggest.
