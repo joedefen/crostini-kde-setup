@@ -1,7 +1,8 @@
 # CROSTINI KDE SETUP #
 ### Purpose ###
 With only two commands, install key apps from KDE, one of the most populur Linux Desktops
-due to it efficiency, customizability, and good looks.
+due to it efficiency, customizability, and good looks (but **it does NOT install the
+KDE Plasma Desktop**).
 For newbies, most importantly, it installs **Discover** which is an elegant, easy-to-use
 "app store" for Linux apps and nearly every app is free.
 
@@ -31,7 +32,9 @@ And, it installs:
     * Unlike **Kate**, **Geany** can be run with sudo (e.g., to edit system files with a GUI editor)
     * To run a sudo'ed GUI app, like, **Geany**, from Terminal, first run `xhost +` on a separate line.
 
-*Note: this script has been tested on Chromebook v88 through v94.*
+*Note: this script has been tested on Chromebook v88 through v96.*
+
+Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfactorily** even though Discover offers the Desktop for installation.  So, stick to install "Applications", per se, in Discover, not the Plasma Desktop or its Addons.
 
 ---
 ### "Normal" Installation Instructions ###
