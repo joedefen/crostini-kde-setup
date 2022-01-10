@@ -8,7 +8,7 @@ For newbies, most importantly, it installs **Discover** which is an elegant, eas
 
 KDE apps work best on Chromebook Linux (a.k.a., Crostini) if certain KDE environment variables are set.
 Doing so is a bit tricky and undocumented, and this script automates the basic KDE environment setup.
-Once the core KDE apps are installed from the Terminal, use the Chromebook launger to run:
+Once the core KDE apps are installed from the Terminal, use the Chromebook launcher to run:
 * **Discover** add/launch/remove more Linux applications from a GUI.
 * **MaintGUI** which provides a one-button click for the very typical maintenance needs (described below).
 
@@ -34,7 +34,7 @@ And, it installs:
 
 *Note: this script has been tested on Chromebook v88 through v96.*
 
-Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfactorily** even though Discover offers the Desktop for installation.  So, stick to install "Applications", per se, in Discover, not the Plasma Desktop or its Addons.
+Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfactorily** even though Discover offers the Desktop for installation.  So, mostly stick to installing "Applications", per se, in Discover, not the Plasma Desktop or its Addons.
 
 ---
 ### "Normal" Installation Instructions ###
