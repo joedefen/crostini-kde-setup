@@ -84,7 +84,7 @@ Follow only one set of install instructions, either "Normal" (these) or "Starter
 Launch **MaintGUI** for most maintenance needs which has these buttons:
 * **Update Linux** - updates your Linux and its software which you should run periodically
   and after Chromebook major version updates.
-* **Refresh Icons** - repairs icons for linux apps when messed up.
+* **Refresh Icons** - *sometimes* repairs icons for linux apps when messed up *after* having been more correct than currently.  This will not fix icons for newly install programs being wrong, generally. After running this, all or most of the Linux icons will disappear, and slowly be restored when ChromeOS polls for installed Linux programs/icons.  Sometimes, ChromeOS will show a penguin as the icon for a program and then later repair it, and sometimes it is permanent because the icon is not present or has an unsupported format.
 * **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository.  **After enabling Flapak**:
     * Press Ctrl+Alt+T (when hovering over a Chrome window). A "crosh" terminal window will open (this is NOT the crostini terminal).
     * Type `vsh termina` and press enter.
