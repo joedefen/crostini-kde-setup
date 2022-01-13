@@ -1,4 +1,10 @@
 #!/bin/bash
+# Setup script to run on Crostini (i.e., Chromebook Linux) to
+# - bring the distro up-to-date
+# - create a bare KDE app "environment" so the apps look as if they
+#   are part of a typical KDE Plasma desktop environment
+# - install some basic, mostly KDE apps including Discover
+# - install "MaintGUI" for doing basic maintenance after this setup
 
 HERE=$(dirname $(realpath $0))
 BIN=~/.local/bin
@@ -6,19 +12,24 @@ BIN=~/.local/bin
 set -x -e
 
 mkdir -p $BIN
-for x in maint-gui maint-cli; do
+for x in maint-gui maint-cli; do # cleanup retired names
+    rm -f $BIN/$x
+done
+for x in maintgui maintcli PySimpleGUI.py; do # install maintgui
     ln -f $HERE/$x $BIN/.
 done
-MaintGUI=$(realpath $BIN/maint-gui)
+MaintGUI=$(realpath $BIN/maintgui)
 
-bash $BIN/maint-cli update-linux
+bash $BIN/maintcli update-linux  # bring distro up-to-date
 
+# Set ENVIROMENT VARIABLES that make kde apps behave "as expected"
 CONF=/etc/systemd/user/cros-garcon.service.d/cros-garcon-override.conf
 sudo tee -a $CONF >/dev/null <<'EOF'
 Environment="QT_QPA_PLATFORMTHEME=qt5ct"
 Environment="XDG_CURRENT_DESKTOP=KDE"
 EOF
 
+# install basic icons, fonts, KDE (and other) apps
 sudo apt -y install apt-utils
 sudo apt -y install qt5ct breeze-icon-theme
 # NOTE: was ttf-dejavu before v96
@@ -29,10 +40,10 @@ xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-f
 xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-software-update.png
 xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/512x512/*/utilities-terminal.png
 sudo apt -y install dolphin konsole kate okular geany
-sudo apt -y install --no-install-recommends python3-pip python3-tk
-sudo pip3 install PySimpleGUI
+sudo apt -y install --no-install-recommends python3-tk
 sudo apt -y autoremove
 
+# create a basic .vimrc for typical developer
 if [ ! -f ~/.vimrc ]; then
     cat > ~/.vimrc <<EOF
 syntax on
@@ -45,6 +56,7 @@ EOF
 fi
 
 
+# add .desktop for MaintGUI
 mkdir -p ~/.local/share/applications
 cat >~/.local/share/applications/MaintGUI.desktop <<EOF
 [Desktop Entry]
@@ -56,6 +68,7 @@ Type=Application
 Icon=system-software-update
 EOF
 
+# create a "pleasant" light color or Konsole
 mkdir -p ~/.local/share/konsole
 cat > ~/.local/share/konsole/LocalHost.profile <<'EOF'
 [Appearance]
@@ -74,6 +87,7 @@ DefaultProfile=LocalHost.profile
 EOF
 
 
+# establish out default qt5 look-and-feel
 mkdir -p ~/.config/qt5ct
 cat > ~/.config/qt5ct/qt5ct.conf <<'EOF'
 [Appearance]

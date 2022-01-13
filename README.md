@@ -79,13 +79,15 @@ Follow only one set of install instructions, either "Normal" (these) or "Starter
 ---
 ### MaintGUI Instructions ###
 
-![KDEApps](images/Screenshot-MaintGUI-2022-01-05.png)
+![KDEApps](images/Screenshot-MaintGUI-2022-01-13.png)
 
-Launch **MaintGUI** for most maintenance needs. **After pressing a button, wait for '----DONE---' line before exiting.**  The available buttons:
+Launch **MaintGUI** for most maintenance needs. The available buttons:
+* **EXIT** - *use this button* to exit MaintGUI which will be clickable only when idle between operations; do **NOT** 'Force close' the app except for "emergencies" where an operation does not finish (note that some operations require several minutes, but there should no pauses of minutes w/o output).
+    * *After an operation, it is best to keep MaintGUI open in case of problems. Then, you can peruse the output, and read/copy/paste as needed for troubleshooting.*
 * **Update Linux** - updates your Linux and its software which you should run periodically
   and after Chromebook major version updates.
 * **Refresh Icons** - *sometimes* repairs icons for linux apps when messed up *after* having been more correct than currently.  This will not fix icons for newly install programs being wrong, generally. After running this, all or most of the Linux icons will disappear, and slowly be restored when ChromeOS polls for installed Linux programs/icons.  Sometimes, ChromeOS will show a penguin as the icon for a program and then later repair it, and sometimes it is permanent because the icon is not present or has an unsupported format.
-* **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository.  **After enabling Flapak**:
+* **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository.  **After enabling Flatpak**:
     * Press Ctrl+Alt+T (when hovering over a Chrome window). A "crosh" terminal window will open (this is NOT the crostini terminal).
     * Type `vsh termina` and press enter.
     * Type `lxc config set penguin security.nesting true` and press enter.
