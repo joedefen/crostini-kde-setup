@@ -65,6 +65,7 @@ function purge_flatpak() {
         flatpak uninstall --all -y
         sudo apt -y purge flatpak plasma-discover-backend-flatpak
         sudo apt -y autoremove
+        sudo rm -rf ~/.local/share/flatpak ~/.cache/flatpak /var/lib/flatpak /root/.local/share/flatpak
         echo -e "\n\n======> FINISHED: please restart Linux manually..."
     else
         echo -e "\nNOTE: nothing to do; flatpak is disabled"
@@ -196,6 +197,3 @@ case $1 in
     disable-libreoffice-file-locking) disable_libreoffice_file_locking;;
     *) echo "main-cli: Unknown command: '$1'"; exit 1;;
 esac
-
-
-
