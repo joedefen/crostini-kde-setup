@@ -77,6 +77,14 @@ Follow only one set of install instructions, either "Normal" (these) or "Starter
 1. After every Chromebook update (which occur about monthly), we suggest you launch **MaintGUI** and click **Update Linux** to ensure your container is running the most aggreeable software for your Chromebook).  Do this immediately if you used the "Starter Image" install method.
 
 ---
+### Updating `costini-kde-setup` Itself
+Probably, you will never need to, but if you wish/need to update this software, then
+1. In Terminal, remove the install script by:
+	* `rm -rf ~/crostini-kde-setup`
+1. Follow the "Normal" Install instructions (except you don't re-create the container).
+
+
+---
 ### MaintGUI Instructions ###
 
 ![KDEApps](images/Screenshot-MaintGUI-2022-01-13.png)
