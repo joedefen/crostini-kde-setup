@@ -108,14 +108,17 @@ Launch **MaintGUI** for most maintenance needs. The available buttons:
     * in LibreOffice's Tools > Options > LibreOffice > Advanced > Open Expert Configuration, set:
         * *UseLocking* to false
         * *UseDocumentOOoLockFile* to false
-* For changing the Debian repository (from initially **Stable**):
+* For changing the Debian repository  from its intial **Stable** (and see **Which Debian Repository Should You Use** before doing so), click:
     * **Testing** - newer, less stable software; you cannot to return to **Stable**.
-    * **Unstable** - newest, least stable software; you may not be able
-      to return to **Testing** and cannot return to **Stable**.
+    * **Unstable** - newest, least stable software; you may not be able to return to **Testing** and cannot return to **Stable**.
+
  
 **NOTE**: **Snaps do not work well** (e.g., see [Yes, you can install Snap packages on Chrome OS, but it’s not great](https://chromeunboxed.com/install-snap-packages-chromebook-crostini-linux-how-to/)), and thus no Snap buttons are provided lest it leads you down that rathole.
- 
-#### Which Debian Repository Should You Use?"
+
+---
+
+### Which Debian Repository Should You Use? ###
+
 Debian is famous for lagging well behind the lastest app releases, but **MaintGUI** can remedy that.  Our advice:
 * remain on **Stable** unless you require more current apps although **Unstable** and **Testing** are not nearly as risky as their names suggest.
 * you are initially on Debian **Stable** after enabling Linux; if you leave **Stable**,
@@ -126,6 +129,14 @@ Debian is famous for lagging well behind the lastest app releases, but **MaintGU
   until one succeeds (or restore a known good backup image).
 * upgrading to **Unstable** is typically a better choice than **Testing**;  use **Testing** only if
   experimentally, you find it works best for your apps
+
+  * **note**: when you leave **Stable** for **Unstable** and **Testing**, `contrib` is added to the sources which adds certain apps like `tor`.
+
+The built-in rules for manipulating Debian sources are very simplistic.  You can manually update the sources per:
+* [Debian SourcesList](https://wiki.debian.org/SourcesList)
+* [Apt Configuration](https://wiki.debian.org/AptConfiguration?action=show&redirect=AptPreferences)
+
+*If you decide to "roll your own" sources, you should **Update Linux** afterwards, and, henceforth always manually update the sources.*
 
 ---
 ### Additional Notes ###
