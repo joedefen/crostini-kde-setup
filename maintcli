@@ -105,11 +105,12 @@ function is_snap_enabled() {
 
 function set_debian_repository() {
     # Switch to given debian release (i.e., buster, unstable, or testing)
-    # Passing "stable" means "buster" (for a while)
+    #  - NOTE: not currently supporint 'stable'
+    # Passing "stable" means "bullseye" (for a while)
     # Passing "sid" means "unstable" (permanently)
     apt_list=/etc/apt/sources.list
     case $1 in
-        buster|stable) src=buster ; pref=stable ;;
+        buster|stable) src=bullseye ; pref=stable ;;
         testing) src=testing ; pref=testing ;;
         sid|unstable) src=unstable ; pref=unstable ;;
         *) echo "Unknown Debian Repository: '$1'"; exit 1 ;;
@@ -119,8 +120,8 @@ function set_debian_repository() {
         echo "NOTE: Repository already set to $src"
     fi
 
-    line1="deb https://deb.debian.org/debian $src main"
-    line2="deb https://deb.debian.org/debian-security $src/updates main"
+    line1="deb https://deb.debian.org/debian $src main contrib"
+    line2="deb-src https://deb.debian.org/debian-security $src/updates main contrib"
 
     echo $line1 | sudo tee $apt_list > /dev/null
     if [ "$pref" == "stable" ] ; then
