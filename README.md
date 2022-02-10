@@ -32,9 +32,9 @@ And, it installs:
     * Unlike **Kate**, **Geany** can be run with sudo (e.g., to edit system files with a GUI editor)
     * To run a sudo'ed GUI app, like, **Geany**, from Terminal, first run `xhost +` on a separate line.
 
-*Note: this script has been tested on Chromebook v88 through v96.*
+*Note: this script has been tested on Chromebook v88 through v98.*
 
-Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfactorily** even though Discover offers the Desktop for installation.  So, mostly stick to installing "Applications", per se, in Discover, not the Plasma Desktop or its Addons.
+Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfactorily** even though Discover offers the Desktop for installation.  So, you must mostly stick to installing "Applications", per se, in Discover, not the Plasma Desktop or its Addons.
 
 ---
 ### "Normal" Installation Instructions ###
@@ -103,11 +103,12 @@ Launch **MaintGUI** for most maintenance needs. The available buttons:
     * Restart crostini (i.e., right-click on Terminal in the shelf, and click "Shut down Linux").
 * **Cleanup Flatpak** - recovers disk space after uninstalling flatpak apps (which Discover does not do automatically)
 * **Purge Flatpak** - removes **ALL** install flatpak apps, the flatpak core tools, and **Discover's** awareness of flatpak; i.e., you cannot install flatpaks until re-enabled.
-* **Disable LibreOffice File Locking** - for LibreOffice to work on Google Drive, after installing LibreOffic, run  this to *partly* disable its incompatible file locking. You must also:
-    * be on a relatively up-to-date version of LibreOffice (e.g., via change Debian repository to **Unstable**.)
-    * in LibreOffice's Tools > Options > LibreOffice > Advanced > Open Expert Configuration, set:
+* **Disable LibreOffice File Locking** - for LibreOffice to work on Google Drive, after installing LibreOffic, run  this to *partly* disable its incompatible file locking. **Notes:**
+    * You must also, in LibreOffice's Tools > Options > LibreOffice > Advanced > Open Expert Configuration, set:
         * *UseLocking* to false
         * *UseDocumentOOoLockFile* to false
+    * You *may* wish to upgrade LibreOffice (e.g., by changing Debian repository to **Unstable**.)
+    * This tool has only been tested on Libreoffice from the Debian repos, and not the Flatpak version.    
 * For changing the Debian repository  from its intial **Stable** (and see **Which Debian Repository Should You Use** before doing so), click:
     * **Testing** - newer, less stable software; you cannot to return to **Stable**.
     * **Unstable** - newest, least stable software; you may not be able to return to **Testing** and cannot return to **Stable**.
