@@ -29,7 +29,7 @@ The setup script additionally installs these core KDE apps that can be launched 
 
 And, it installs:
 * **Geany** - an alternative, non-KDE lightweight text editor.
-    * Unlike **Kate**, **Geany** can be run with sudo (e.g., to edit system files with a GUI editor)
+    * Unlike **Kate**, **Geany** can be run with sudo (e.g., to edit system files with a GUI editor instead of clumsy, crude `nano`)
     * To run a sudo'ed GUI app, like, **Geany**, from Terminal, first run `xhost +` on a separate line.
 
 *Note: this script has been tested on Chromebook v88 through v98.*
