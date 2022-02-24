@@ -147,11 +147,11 @@ The built-in rules for manipulating Debian sources are very simplistic.  You can
 ---
 ### Additional Notes ###
 * **Beware of Linux Issues**.  Linux has bugs, although continually improving and already quite useful.
-	* Sometimes the Linux container cannot be restarted; see [Moderators, can we get a pin on Error 51 and other Linux won't start situations?(Reddit)](https://www.reddit.com/r/Crostini/comments/ljdbck/moderators_can_we_get_a_pin_on_error_51_and_other/). So,
+	* **Sometimes the Linux container cannot be restarted**; see [Moderators, can we get a pin on Error 51 and other Linux won't start situations?(Reddit)](https://www.reddit.com/r/Crostini/comments/ljdbck/moderators_can_we_get_a_pin_on_error_51_and_other/). So,
 		* You may be able to set a flag (chrome://flags/#crostini-reset-lxd-db) to get it working.
 		* If not repairable, you may not be able to recover your data.
 		* The last resort fix is to remove Linux and (1) then renable it and do the setup or (2) restore from backup [Restore your Linux files](https://support.google.com/chromebook/answer/9592813?hl=en)
-	* Protect yourself by doing regular backups (to an SD card if short on internal disk space) if you store anything of importance or difficult to re-create within your container.  It is best practice to store documents in your Chromebook's "My Files" (or even better, "Google Drive", not in your containter home directory.  But, if backup is prudent, see [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en)
+	* **Protect yourself by doing regular backups** (to an SD card if short on internal disk space) if you store anything of importance or difficult to re-create within your container.  It is best practice to store documents in your Chromebook's "My Files" (or even better, "Google Drive", not in your containter home directory.  But, if backup is prudent, see [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en)
 * **You can vary UI settings.** The script establishes the Breeze Icon Theme.  After setup, from **Terminal** you can run `qt5ct` to vary some user interface settings.
 * **Change Terminal Settings.** If you wish to customize the terminal (e.g., change colors), then type CTRL-SHIFT-P in the Terminal window to get the Settings popup window.
 * **Make your non-Linux files available to Linux.** Open the Chromebook Files app and right click on "My Files", "Google Drive", and "SD Card" (if installed) and select "Share with Linux" to make each visible to Linux. Then, within the Linux file manager, add these "Place" shortcuts for your shared locations:
@@ -159,7 +159,16 @@ The built-in rules for manipulating Debian sources are very simplistic.  You can
 	* **Google Drive** at `/mnt/chromeos/GoogleDrive/MyDrive`
 	* **SD Card** at `/mnt/chromeos/removable/SD Card/`
 * **Not every Linux app runs well.** You will find many Linux apps that **Discover** lists work fine, but certainly not all.
-	* Sometimes the application will have settings that make it more useful (trying googling a solution).
-	* If an application text and icons are too small, then launch it from the App Drawer (not Discover), right click on its icon in the Chromebook Shelf, select "Use Low Density", close the app, and restart the app.  If the appearance not more acceptable, revert the density choice.
-	* You might find [KDE Apps](https://apps.kde.org/) the most aggreeable, but not all of them work well either.
-	* Many popluar non-KDE apps work well, including **GIMP**, **Firefox**, **VLC**, **Thunderbird**, **Aisleriot Solitaire**, and **GNU Backgammon**.
+	* **Sometimes newly install apps won't start** (and the more demanding the app, the more likely).  Restart your container before throwing in the towel.
+	* **Sometimes the application will have settings that make it run better.** (trying googling a solution).
+	* **If an application text and icons are too small, then** launch it from the App Drawer (not Discover), right click on its icon in the Chromebook Shelf, select "Use Low Density", close the app, and restart the app.  If the appearance not more acceptable, revert the density choice.
+	* **You often find [KDE Apps](https://apps.kde.org/) are the most aggreeable**, but not all of them work well either.
+	* Many popluar non-KDE apps work well (with enough memory), including:
+		* **GIMP** - compares to Photoshop, but I suggest using **Krita** (which is actually better rated and a KDE app).
+		* **Firefox** - but I **strongly** suggest using Chromebook's native Chrome which is better integrated and avoids another memory pig.
+		*  **VLC** and **MPV** - both are good media players; VLC has more knobs, but MPV suffices for most needs.
+		*  **Thunderbird** - if you must, but Chromebook's native Gmail is a great alternative for most of us and avoids another memory pig.
+		*  **Aisleriot Solitaire** - has scores of high quality games including Freecell (and my "must have" time killing app).
+		*  **GNU Backgammon** - a great Backgammon implementation whose GUI is not quite right on Crostini (but sufferable with adjusted settings).
+
+
