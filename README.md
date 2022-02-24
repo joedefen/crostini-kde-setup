@@ -16,6 +16,11 @@ For Linux newbies, these scripts help get you started with a minimal of command 
 for Linux experienced (and especially KDE lovers),
 this scripts makes painless and certain the install of the KDE core apps (and more).
 
+**Notes/Limitations:**
+* To run very well, we recommend a mid-range Chromebook (i.e., a *minimum* of Intel i3 CPU, 8GB memory, 64 GB disk) for any Linux environment, and this foundation does not substantially raise (or lower) the recommended specs.
+* Always temper expectations ... Crostini is design to run productivity apps (especially developer tools), not resource intensive games.
+* On low-end Chromebooks, temper expections much more. With only 4GB RAM, increasing swap sometimes helps if you can spare the disk space (see [Get better performance from your Chromebook with Virtual RAM](https://www.chromecomputing.com/get-better-performance-from-your-chromebook-with-virtual-ram/))
+
 ![KDEApps](images/Screenshot-KDEApps-2021-12-07.png)
 
 The setup script additionally installs these core KDE apps that can be launched from you Chromebook launcher:
