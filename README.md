@@ -100,7 +100,7 @@ Launch **MaintGUI** for most maintenance needs. The available buttons:
 * **Update Linux** - updates your Linux and its software which you should run periodically
   and after Chromebook major version updates.
 * **Refresh Icons** - *sometimes* repairs icons for linux apps when messed up *after* having been more correct than currently.  This will not fix icons for newly install programs being wrong, generally. After running this, all or most of the Linux icons will disappear, and slowly be restored when ChromeOS polls for installed Linux programs/icons.  Sometimes, ChromeOS will show a penguin as the icon for a program and then later repair it, and sometimes it is permanent because the icon is not present or has an unsupported format.
-* **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository.  **After enabling Flatpak**:
+* **Enable Flatpak** - enables **Discover** flatpak app installs from the default flatpak repository.  **After enabling Flatpak for more apps to work, also**:
     * Press Ctrl+Alt+T (when hovering over a Chrome window). A "crosh" terminal window will open (this is NOT the crostini terminal).
     * Type `vsh termina` and press enter.
     * Type `lxc config set penguin security.nesting true` and press enter.
@@ -113,7 +113,8 @@ Launch **MaintGUI** for most maintenance needs. The available buttons:
         * *UseLocking* to false
         * *UseDocumentOOoLockFile* to false
     * You *may* wish to upgrade LibreOffice (e.g., by changing Debian repository to **Unstable**.)
-    * This tool has only been tested on Libreoffice from the Debian repos, and not the Flatpak version.    
+    * This tool has only been tested on Libreoffice from the Debian repos, and not the Flatpak version.
+    * **Hint**. For a much more pleasant LibreOffice look, run `sudo apt install libreoffice-gtk3` from Terminal.
 * For changing the Debian repository  from its intial **Stable** (and see **Which Debian Repository Should You Use** before doing so), click:
     * **Testing** - newer, less stable software; you cannot to return to **Stable**.
     * **Unstable** - newest, least stable software; you may not be able to return to **Testing** and cannot return to **Stable**.
@@ -155,10 +156,13 @@ The built-in rules for manipulating Debian sources are very simplistic.  You can
 * **You can vary UI settings.** The script establishes the Breeze Icon Theme.  After setup, from **Terminal** you can run `qt5ct` to vary some user interface settings.
 * **Change Terminal Settings.** If you wish to customize the terminal (e.g., change colors), then type CTRL-SHIFT-P in the Terminal window to get the Settings popup window.
 * **Make your non-Linux files available to Linux.** Open the Chromebook Files app and right click on "My Files", "Google Drive", and "SD Card" (if installed) and select "Share with Linux" to make each visible to Linux. Then, within the Linux file manager, add these "Place" shortcuts for your shared locations:
+
 	* **My Files** at `/mnt/chromeos/MyFiles`
 	* **Google Drive** at `/mnt/chromeos/GoogleDrive/MyDrive`
 	* **SD Card** at `/mnt/chromeos/removable/SD Card/`
+ 
 * **Not every Linux app runs well.** You will find many Linux apps that **Discover** lists work fine, but certainly not all.
+
 	* **Sometimes newly install apps won't start** (and the more demanding the app, the more likely).  Restart your container before throwing in the towel.
 	* **Sometimes the application will have settings that make it run better.** (trying googling a solution).
 	* **If an application text and icons are too small, then** launch it from the App Drawer (not Discover), right click on its icon in the Chromebook Shelf, select "Use Low Density", close the app, and restart the app.  If the appearance not more acceptable, revert the density choice.
@@ -170,5 +174,7 @@ The built-in rules for manipulating Debian sources are very simplistic.  You can
 		*  **Thunderbird** - if you must, but Chromebook's native Gmail is a great alternative for most of us and avoids another memory pig.
 		*  **Aisleriot Solitaire** - has scores of high quality games including Freecell (and my "must have" time killing app).
 		*  **GNU Backgammon** - a great Backgammon implementation whose GUI is not quite right on Crostini (but sufferable with adjusted settings).
+
+* Find additional useful Crostini tips at [mikeroyal/Chrome-OS-Guide](https://github.com/mikeroyal/Chrome-OS-Guide)
 
 
