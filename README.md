@@ -1,8 +1,9 @@
 # CROSTINI KDE SETUP #
 
->**ALERT:**
->* ChromeOS v100 broke PySimpleGui used by our old `MaintGUI` command which has been replaced by `MaintMenu`.
->* The new `MaintMenu` is based on "Simple Terminal Menu" which should be more unbreakable.
+>**ChromeOS v100 ALERT:**
+>* ChromeOS v100 broke [PySimpleGUI](https://pypi.org/project/PySimpleGUI/) used by the `MaintGUI` command, now replaced by `MaintMenu`.
+>* The new `MaintMenu` is based on [Simple Terminal Menu](https://pypi.org/project/simple-term-menu/) which will be comparably unbreakable; beside simplicity, there are other advantages so the switch is "permanent".
+>* See the section, "Updating `costini-kde-setup` Itself" near the end.
 
 ### Purpose ###
 With only two commands, install key apps from KDE, one of the most popular Linux Desktops due to it efficiency, customizability, and good looks (but **it does NOT install the KDE Plasma Desktop**). For newbies, most importantly, it installs **Discover** which is an elegant, easy-to-use "app store" for Linux apps and nearly every app is free. 
@@ -10,7 +11,7 @@ With only two commands, install key apps from KDE, one of the most popular Linux
 KDE apps work best on Chromebook Linux (a.k.a., Crostini) if certain KDE environment variables are set. Doing so is a bit tricky and undocumented, and this script automates the basic KDE environment setup. Once the core KDE apps are installed from the Terminal, use the Chromebook launcher to run:
 
 * **Discover** add/launch/remove more Linux applications from a GUI.
-* **MaintMenu** which provides a one-button click for the very typical maintenance needs (described below).
+* **MaintMenu** which provides a one-key press for the very typical maintenance needs (described below).
 
 For Linux newbies, these scripts help get you started with a minimal of command line interaction; for Linux experienced (and especially KDE lovers), this scripts makes painless and certain the install of the KDE core apps (and more).
 
@@ -50,7 +51,8 @@ Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfa
 1. After enabling Linux, a "Terminal" will open;  then enter these commands (one per line):
 	* `git clone https://github.com/joedefen/crostini-kde-setup.git`
 	* `bash crostini-kde-setup/kde-setup.sh`
-		* *Note: to enter the commands, you may copy each line in Chrome and right-click within the Terminal to paste, saving typing and avoiding typos.*
+		* *Note: to enter the commands, you may copy each line in Chrome and right-
+		within the Terminal to paste, saving typing and avoiding typos.*
 1. After the script completes (and it will take 10 minutes or so), **restart your container** (i.e., *right-click* the Terminal icon on the shelf and select *Shut down Linux*; then launch *Terminal* again).
 
 ---
@@ -110,7 +112,7 @@ You may have these choices:
     * You *may* wish to upgrade LibreOffice (e.g., by changing Debian repository to **Unstable**.)
     * This tool has only been tested on Libreoffice from the Debian repos, and not the Flatpak version.
     * **Hint**. For a much more pleasant LibreOffice look, run `sudo apt install libreoffice-gtk3` from Terminal.
-* For changing the Debian repository  from its intial **Stable** (and see **Which Debian Repository Should You Use** before doing so), click:
+* For changing the Debian repository  from its intial **Stable** (and see **Which Debian Repository Should You Use** before doing so), select:
     * **Debian Testing** - newer, less stable software; you cannot to return to **Stable**.
     * **Debian Unstable** - newest, least stable software; you may not be able to return to **Testing** and cannot return to **Stable**.
  
@@ -149,7 +151,7 @@ The built-in rules for manipulating Debian sources are very simplistic.  You can
 	* **Protect yourself by doing regular backups** (to an SD card if short on internal disk space) if you store anything of importance or difficult to re-create within your container.  It is best practice to store documents in your Chromebook's "My Files" (or even better, "Google Drive", not in your containter home directory.  But, if backup is prudent, see [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en)
 * **You can vary UI settings.** The script establishes the Breeze Icon Theme.  After setup, from **Terminal** you can run `qt5ct` to vary some user interface settings.
 * **Change Terminal Settings.** If you wish to customize the terminal (e.g., change colors), then type CTRL-SHIFT-P in the Terminal window to get the Settings popup window.
-* **Make your non-Linux files available to Linux.** Open the Chromebook Files app and right click on "My Files", "Google Drive", and "SD Card" (if installed) and select "Share with Linux" to make each visible to Linux. Then, within the Linux file manager, add these "Place" shortcuts for your shared locations:
+* **Make your non-Linux files available to Linux.** Open the Chromebook Files app and right-click on "My Files", "Google Drive", and "SD Card" (if installed) and select "Share with Linux" to make each visible to Linux. Then, within the Linux file manager, add these "Place" shortcuts for your shared locations:
 
 	* **My Files** at `/mnt/chromeos/MyFiles`
 	* **Google Drive** at `/mnt/chromeos/GoogleDrive/MyDrive`
@@ -159,7 +161,7 @@ The built-in rules for manipulating Debian sources are very simplistic.  You can
 
 	* **Sometimes newly install apps won't start** (and the more demanding the app, the more likely).  Restart your container before throwing in the towel.
 	* **Sometimes the application will have settings that make it run better.** (trying googling a solution).
-	* **If an application text and icons are too small, then** launch it from the App Drawer (not Discover), right click on its icon in the Chromebook Shelf, select "Use Low Density", close the app, and restart the app.  If the appearance not more acceptable, revert the density choice.
+	* **If an application text and icons are too small, then** launch it from the App Drawer (not Discover), right-click on its icon in the Chromebook Shelf, select "Use Low Density", close the app, and restart the app.  If the appearance not more acceptable, revert the density choice.
 	* **You often find [KDE Apps](https://apps.kde.org/) are the most aggreeable**, but not all of them work well either.
 	* Many popluar non-KDE apps work well (with enough memory), including:
 		* **GIMP** - compares to Photoshop, but I suggest using **Krita** (which is actually better rated and a KDE app).
