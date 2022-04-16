@@ -2,7 +2,7 @@
 
 >**ALERT:**
 >* ChromeOS v100 broke PySimpleGui used by our old `MaintGUI` command which has been replaced by `MaintMenu`.
->* `MaintMenu` replaces `MaintGUI`, and `MaintMenu` is based on "Simple Terminal Menu" which should be more unbreakable.
+>* The new `MaintMenu` is based on "Simple Terminal Menu" which should be more unbreakable.
 
 ### Purpose ###
 With only two commands, install key apps from KDE, one of the most popular Linux Desktops due to it efficiency, customizability, and good looks (but **it does NOT install the KDE Plasma Desktop**). For newbies, most importantly, it installs **Discover** which is an elegant, easy-to-use "app store" for Linux apps and nearly every app is free. 
