@@ -3,7 +3,7 @@
 >**ChromeOS v100 ALERT:**
 >* ChromeOS v100 broke [PySimpleGUI](https://pypi.org/project/PySimpleGUI/) used by the `MaintGUI` command, now replaced by `MaintMenu`.
 >* The new `MaintMenu` is based on [Simple Terminal Menu](https://pypi.org/project/simple-term-menu/) which will be comparably unbreakable; beside simplicity, there are other advantages so the switch is "permanent".
->* See the section, "Updating `costini-kde-setup` Itself" near the end.
+>* See the section, "Updating `crostini-kde-setup` Itself" near the end to upgrade to `MaintMenu`.
 
 ### Purpose ###
 With only two commands, install key apps from KDE, one of the most popular Linux Desktops due to it efficiency, customizability, and good looks (but **it does NOT install the KDE Plasma Desktop**). For newbies, most importantly, it installs **Discover** which is an elegant, easy-to-use "app store" for Linux apps and nearly every app is free. 
@@ -71,24 +71,25 @@ Launch **MaintMenu** for most maintenance needs. From the Chromebook Launcher, i
 * Press the "Toggle Fullscreen" button (above the "5" key).
 * Press the "Overview" key (above the "6" key).
 
-`MaintMenu` offers a "smart" subset of this menu presenting only those options that are currently sensible to use:
+`MaintMenu` offers a "smart" subset of these menu options presenting only those that are sensible to use:
 ```
-=== MaintMenu: ChromeOS=v100 DebRelease=unstable Flatpak=off  ===
+
+=== MaintMenu: ChromeOS=v100 DebRelease=unstable Flatpak=off LibOfcLock=off ===
 
 Select maintenance task by using the leading character OR
       the direction keys and "Enter"
 
-> [q] Quit                                                                                                    
-  [u] Update Linux -- run after ChromeOS update (at least)                                                    
-  [r] Refresh Icons -- fix cases of icons becoming lost                                                       
-  [f] Enable Flatpak -- w Discover support (more steps in README)                                             
-  [c] Cleanup Flatpak -- clean disk after uninstalling FlatPak apps                                           
-  [F] Purge Flatpak -- remove FlatPak apps and disable its support                                            
-  [L] Disable LibreOffice File Locking -- enable GDrive (more steps in README)                                
-  [T] Debian Testing -- switch to Testing release                                                             
-  [S] Debian Unstable -- switch to Unstable release (a.k.a., Sid)                                             
+  [q] Quit 
+  [u] Update Linux -- run after ChromeOS update (at least)
+  [r] Refresh Icons -- fix cases of icons becoming lost
+  [f] Enable Flatpak -- w Discover support (more steps in README)
+  [c] Cleanup Flatpak -- clean disk after uninstalling FlatPak apps
+  [p] Purge Flatpak -- remove FlatPak apps and disable its support
+  [l] Disable LibreOffice File Locking -- enable GDrive (more steps in README)
+  [t] Debian Testing -- switch to Testing release
+  [s] Debian Unstable -- switch to Unstable release (a.k.a., Sid)
 ```
-You may have these choices:
+So, you will have have some choices:
 
 * **Quit** - *use this option* to exit MaintMenu which is available only when idle between operations; do **NOT** use other methods to close.
 
