@@ -74,7 +74,7 @@ def get_state():
     libofc_lock = 'n/a'
     if os.system('which soffice > /dev/null 2>&1') == 0:
         libofc_lock = 'on'
-        if os.system("grep -qs '#.*SAL_FILE_LOCKING' $(which soffice)") == 0:
+        if os.system("grep -qs '#.*_ENABLE_FILE_LOCKING' $(which soffice)") == 0:
             libofc_lock = 'off'
 
     state = SimpleNamespace(ver=version, rel=release,
@@ -124,7 +124,6 @@ def main():
             print('-- ALERT: DO NOT interrupt tasks or risk creating unfortunate issues\n')
             time.sleep(1.0)
             if dry_run:
-                print("NOTE: skipping operation (dry-run)")
                 continue
             if 'Update Linux' in picked:
                 run_subcmd('update-linux')
