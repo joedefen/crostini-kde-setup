@@ -8,17 +8,20 @@
 
 HERE=$(dirname $(realpath $0))
 BIN=~/.local/bin
-
 set -x -e
-
 mkdir -p $BIN
-for x in maint-gui maint-cli; do # cleanup retired names
+
+    # cleanup retired names
+for x in maint-gui maint-cli maintgui PySimpleGUI.py; do
     rm -f $BIN/$x
 done
-for x in maintgui maintcli PySimpleGUI.py; do # install maintgui
+rm -f ~/.local/share/applications/MaintGUI.desktop
+
+    # install programs
+for x in maintcli maintmenu; do # install maintmenu
     ln -f $HERE/$x $BIN/.
 done
-MaintGUI=$(realpath $BIN/maintgui)
+MaintMenu=$(realpath $BIN/maintmenu)
 
 bash $BIN/maintcli update-linux  # bring distro up-to-date
 
@@ -40,7 +43,8 @@ xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-f
 xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-software-update.png
 xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/512x512/*/utilities-terminal.png
 sudo apt -y install dolphin konsole kate okular geany
-sudo apt -y install --no-install-recommends python3-tk
+sudo apt install --no-install-recommends python3-pip
+python3 -m pip install simple-term-menu
 sudo apt -y autoremove
 
 # create a basic .vimrc for typical developer
@@ -56,13 +60,13 @@ EOF
 fi
 
 
-# add .desktop for MaintGUI
+# add .desktop for MaintMenu
 mkdir -p ~/.local/share/applications
-cat >~/.local/share/applications/MaintGUI.desktop <<EOF
+cat >~/.local/share/applications/MaintMenu.desktop <<EOF
 [Desktop Entry]
-Name=MaintGUI
+Name=MaintMenu
 Comment=Update Linux
-Exec=${MaintGUI}
+Exec=konsole --fullscreen --hide-menubar --hide-tabbar -e ${MaintMenu}
 Terminal=false
 Type=Application
 Icon=system-software-update

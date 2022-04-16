@@ -184,6 +184,7 @@ function disable_libreoffice_file_locking() {
 }
 
 
+trap -- '' SIGINT SIGQUIT SIGTERM SIGHUP SIGPIPE SIGUSR1 SIGUSR2
 case $1 in 
     get-state) get_state;;
     update-linux) update_linux;;
@@ -196,5 +197,12 @@ case $1 in
     set-debian-testing) set_debian_repository testing;;
     set-debian-unstable) set_debian_repository unstable;;
     disable-libreoffice-file-locking) disable_libreoffice_file_locking;;
-    *) echo "main-cli: Unknown command: '$1'"; exit 1;;
+    *) echo "ERROR: maintcli: Unknown command: '$1'";
+        echo "USE: maintcli {subcmd} # where {subcmd} may be:"
+        echo "      get-state, update-linux, refresh-icons,"
+        echo "      enable-flatpak, purge-flatpak, cleanup-flatpak,"
+        echo "      set-debian-testing, set-debian-unstable,"
+        echo "      or disable-libreoffice-file-locking"
+        exit 1
+        ;;
 esac

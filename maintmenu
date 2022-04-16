@@ -1,0 +1,157 @@
+#!/usr/bin/env python3
+"""TBD"""
+# pylint: disable=invalid-name
+
+import os
+import sys
+import time
+import subprocess
+import traceback
+import argparse
+from types import SimpleNamespace
+from simple_term_menu import TerminalMenu
+
+def run_primitive(subcmd, tout=None):
+    """ run shell command
+    @param subcmd: sub-command to execute
+    @param tout: timeout for command execution
+    @return: (return code from command, command output)
+    """
+    # pylint: disable=consider-using-with
+    cmd = 'bash ~/.local/bin/maintcli ' + subcmd
+    p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    output = ''
+    for line in p.stdout:
+        try:
+            line = line.decode(errors='replace' if (sys.version_info) < (3, 5)
+                    else 'backslashreplace').rstrip()
+            output += line
+            print(line)
+        except KeyboardInterrupt:
+            pass
+
+    retval = None
+    while retval is None:
+        try:
+            retval = p.wait(tout)
+        except KeyboardInterrupt:
+            pass
+    return (retval, output)
+
+def run_prompt():
+    """TBD"""
+    _, _ = run_primitive('get-state', None)
+    print('----------- READY --------------\n')
+
+def run_subcmd(subcmd, tout=None):
+    """Run command with decoration"""
+    print('\n\n      --------------------------')
+    retval, output = run_primitive(subcmd, tout)
+    print(f'\n----------- {subcmd} DONE --------------\n')
+    # run_prompt()
+    return (retval, output)
+
+def get_state():
+    """TBD"""
+    with open('/dev/.cros_milestone', mode='r', encoding='utf-8') as fhandle:
+        lines = fhandle.readlines()
+    version = lines[0]
+    with open('/etc/apt/sources.list', mode='r', encoding='utf-8') as fhandle:
+        text = fhandle.read()
+    if 'unstable' in text:
+        release = 'unstable'
+    elif 'testing' in text:
+        release = 'testing'
+    else:
+        release = 'stable'
+
+    is_flatpack = 'off' # til proven otherwise
+    if os.system('which flatpak > /dev/null 2>&1') == 0:
+        if os.system('dpkg-query -W plasma-discover-backend-flatpak > /dev/null 2>&1'):
+            is_flatpack = 'on'
+            
+    
+    libofc_lock = 'n/a'
+    if os.system('which soffice > /dev/null 2>&1') == 0:
+        libofc_lock = 'on'
+        if os.system("grep -qs '#.*FILE_LOCKING' $(which soffice)") == 0:
+            libofc_lock = 'off'
+
+    state = SimpleNamespace(ver=version, rel=release,
+        flatpak=is_flatpack, libofc=libofc_lock)
+    return state
+
+def main():
+    """TBD"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-e', '--every', action='store_true',
+             help='show every choice even if inapplicable')
+    args = parser.parse_args()
+
+    while True:
+        state = get_state()
+        print(f'\n=== MaintMenu: ChromeOS=v{state.ver} DebRelease={state.rel} Flatpak={state.flatpak}',
+            '' if state.libofc == 'n/a' else 'LibOfcLock={state.libofc}', '===')
+        print('\n\nSelect maintenance task by using the leading character OR\n',
+            '     the direction keys and "Enter"\n')
+        every = args.every
+        opts = [
+            '[q] Quit',
+            '[u] Update Linux -- run after ChromeOS update (at least)',
+            '[r] Refresh Icons -- fix cases of icons becoming lost',
+        ]
+        if every or state.flatpak == 'off':
+            opts.append('[f] Enable Flatpak -- w Discover support (more steps in README)')
+        if every or state.flatpak != 'off':
+            opts.append('[c] Cleanup Flatpak -- clean disk after uninstalling FlatPak apps')
+            opts.append('[F] Purge Flatpak -- remove FlatPak apps and disable its support')
+        if every or state.libofc == 'on':
+            opts.append('[L] Disable LibreOffice File Locking -- enable GDrive (more steps in README)')
+        if every or state.rel in ('stable', 'unstable'):
+            opts.append('[T] Debian Testing -- switch to Testing release')
+        if every or state.rel in ('stable', 'testing'):
+            opts.append('[S] Debian Unstable -- switch to Unstable release (a.k.a., Sid)')
+        menu = TerminalMenu(opts)
+        idx = menu.show()
+        picked = opts[idx]
+        print(f'\n===> To run: {picked}\n')
+        if 'Quit' in picked:
+            sys.exit(0)
+        try:
+            print('-- ALERT: DO NOT interrupt tasks or risk creating unfortunate issues\n')
+            time.sleep(1.0)
+            if 'Update Linux' in picked:
+                run_subcmd('update-linux')
+            elif 'Refresh Icons' in picked:
+                run_subcmd('refresh-icons')
+            elif 'Enable Flatpak' in picked:
+                run_subcmd('enable-flatpak')
+            elif 'Cleanup Flatpak' in picked:
+                run_subcmd('cleanup-flatpak')
+            elif 'Purge Flatpak' in picked:
+                run_subcmd('purge-flatpak')
+            elif 'Disable LibreOffice File Locking' in picked:
+                run_subcmd('disable-libreoffice-file-locking')
+            elif 'Stable' in picked:
+                run_subcmd('set-debian-stable')
+            elif 'Testing' in picked:
+                run_subcmd('set-debian-testing')
+            elif 'Unstable' in picked:
+                run_subcmd('set-debian-unstable')
+        except KeyboardInterrupt:
+            pass
+
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("Shutdown requested, so exiting ...")
+        sys.exit(15)
+
+    except Exception as exc:
+        if not isinstance(exc, BrokenPipeError):
+            print("Caught exception running main(), so exiting ...")
+            print(traceback.format_exc())
+        sys.exit(15)
+
+    sys.exit(0)
