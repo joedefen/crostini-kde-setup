@@ -74,7 +74,7 @@ def get_state():
     libofc_lock = 'n/a'
     if os.system('which soffice > /dev/null 2>&1') == 0:
         libofc_lock = 'on'
-        if os.system("grep -qs '#.*FILE_LOCKING' $(which soffice)") == 0:
+        if os.system("grep -qs '#.*SAL_FILE_LOCKING' $(which soffice)") == 0:
             libofc_lock = 'off'
 
     state = SimpleNamespace(ver=version, rel=release,
@@ -91,7 +91,7 @@ def main():
     while True:
         state = get_state()
         print(f'\n=== MaintMenu: ChromeOS=v{state.ver} DebRelease={state.rel} Flatpak={state.flatpak}',
-            '' if state.libofc == 'n/a' else 'LibOfcLock={state.libofc}', '===')
+            '' if state.libofc == 'n/a' else f'LibOfcLock={state.libofc}', '===')
         print('\n\nSelect maintenance task by using the leading character OR\n',
             '     the direction keys and "Enter"\n')
         every = args.every

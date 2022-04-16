@@ -179,7 +179,7 @@ function disable_libreoffice_file_locking() {
     set -x
     if which soffice > /dev/null; then
         soffice=$(which soffice)
-        sudo sed -i -E 's!^([^#].*FILE_LOCKING.*)$!# \1!' $soffice
+        sudo sed -i -E 's!^([^#].*SAL_FILE_LOCKING.*)$!# \1!' $soffice
     fi
 }
 
