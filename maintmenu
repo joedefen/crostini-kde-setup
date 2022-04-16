@@ -86,6 +86,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-e', '--every', action='store_true',
              help='show every choice even if inapplicable')
+    parser.add_argument('-n', '--dry-run', action='store_true',
+             help='do NOT actually run tasks')
     args = parser.parse_args()
 
     while True:
@@ -95,6 +97,7 @@ def main():
         print('\n\nSelect maintenance task by using the leading character OR\n',
             '     the direction keys and "Enter"\n')
         every = args.every
+        dry_run = args.dry_run
         opts = [
             '[q] Quit',
             '[u] Update Linux -- run after ChromeOS update (at least)',
@@ -104,13 +107,13 @@ def main():
             opts.append('[f] Enable Flatpak -- w Discover support (more steps in README)')
         if every or state.flatpak != 'off':
             opts.append('[c] Cleanup Flatpak -- clean disk after uninstalling FlatPak apps')
-            opts.append('[F] Purge Flatpak -- remove FlatPak apps and disable its support')
+            opts.append('[p] Purge Flatpak -- remove FlatPak apps and disable its support')
         if every or state.libofc == 'on':
-            opts.append('[L] Disable LibreOffice File Locking -- enable GDrive (more steps in README)')
+            opts.append('[l] Disable LibreOffice File Locking -- enable GDrive (more steps in README)')
         if every or state.rel in ('stable', 'unstable'):
-            opts.append('[T] Debian Testing -- switch to Testing release')
+            opts.append('[t] Debian Testing -- switch to Testing release')
         if every or state.rel in ('stable', 'testing'):
-            opts.append('[S] Debian Unstable -- switch to Unstable release (a.k.a., Sid)')
+            opts.append('[s] Debian Unstable -- switch to Unstable release (a.k.a., Sid)')
         menu = TerminalMenu(opts)
         idx = menu.show()
         picked = opts[idx]
@@ -120,6 +123,9 @@ def main():
         try:
             print('-- ALERT: DO NOT interrupt tasks or risk creating unfortunate issues\n')
             time.sleep(1.0)
+            if dry_run:
+                print("NOTE: skipping operation (dry-run)")
+                continue
             if 'Update Linux' in picked:
                 run_subcmd('update-linux')
             elif 'Refresh Icons' in picked:
