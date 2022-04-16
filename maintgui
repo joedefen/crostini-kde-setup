@@ -9,19 +9,19 @@ NOTE: PySimpleGUI.py (from github) MUST be part of the project currently. The ve
 the "Python Package Index" does not support the 'disable_close' argument to Window(),
 and we'd like to prevent inadvertenly closing the window during an operation.
 """
-import os
+## import os
 import sys
-import re
+## import re
 import time
 import traceback
 import subprocess
 import PySimpleGUI as sg
 
-def run_primitive(subcmd, window=None, timeout=None):
+def run_primitive(subcmd, win=None, tout=None):
     """ run shell command
     @param subcmd: sub-command to execute
-    @param timeout: timeout for command execution
-    @param window: the PySimpleGUI window that the output is going to (needed to do refresh on)
+    @param tout: timeout for command execution
+    @param win: the PySimpleGUI window that the output is going to (needed to do refresh on)
     @return: (return code from command, command output)
     """
     nop = None
@@ -29,24 +29,25 @@ def run_primitive(subcmd, window=None, timeout=None):
     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     output = ''
     for line in p.stdout:
-	    line = line.decode(errors='replace' if (sys.version_info) < (3, 5) else 'backslashreplace').rstrip()
-	    output += line
-	    print(line)
-	    window.refresh() if window else nop        # yes, a 1-line if, so shoot me
+        line = line.decode(errors='replace' if (sys.version_info) < (3, 5) else 'backslashreplace').rstrip()
+        output += line
+        print(line)
+        _ = win.refresh() if win else nop        # yes, a 1-line if, so shoot me
 
-    retval = p.wait(timeout)
+    retval = p.wait(tout)
     return (retval, output)
 
-def run_prompt(window=None):
-    _, _ = run_primitive('get-state', window, None)
+def run_prompt(win=None):
+    """TBD"""
+    _, _ = run_primitive('get-state', win, None)
     print('----------- READY --------------\n')
 
-def run_subcmd(subcmd, window=None, timeout=None):
+def run_subcmd(subcmd, win=None, tout=None):
     """Run command with decoration"""
     print('\n\n      --------------------------')
-    retval, output = run_primitive(subcmd, window, timeout)
+    retval, output = run_primitive(subcmd, win, tout)
     print('----------- DONE --------------\n')
-    run_prompt(window)
+    run_prompt(win)
     return (retval, output)
 
 
@@ -73,51 +74,56 @@ layout = [
                 sg.Output(size=(120,36), font=('Monospace', 11))
             ]
          ]
-window = sg.Window(title='Linux Maint GUI', layout=layout, disable_close=True)
+text_elem = sg.Text(size=(18, 1))
 
 
-# Event Loop to process "events" and get the "values" of the inputs
-timeout = 100 # ms, 1st timeout to get going
-intro = ('   <<< Use "EXIT" button to exit;'
-    ' window close (X) is disabled to prevent mid-operation exit >>>\n')
-while True:
-    try:
-        event, value_dict = window.read(timeout)
-        if timeout:
-            run_prompt(window)
-            if intro:
-                print(intro)
-                intro = ''
-            timeout = None
-        pattern, wds = '', []
-        if isinstance(value_dict, dict) and value_dict:
-            pattern = list(value_dict.values())[0]
-            wds = pattern.split()
-        # print('\n\nevent:', event, 'wds:', wds)
-        if event == sg.WIN_CLOSED or event == 'EXIT':
-            # if user closes window or clicks EXIT
-            break
-        # print('You entered ', pattern)
-        elif event == 'Update Linux':
-            run_subcmd('update-linux', window)
-        elif event == 'Refresh Icons':
-            run_subcmd('refresh-icons', window)
-        elif event == 'Enable Flatpak':
-            run_subcmd('enable-flatpak', window)
-        elif event == 'Cleanup Flatpak':
-            run_subcmd('cleanup-flatpak', window)
-        elif event == 'Purge Flatpak':
-            run_subcmd('purge-flatpak', window)
-        elif event == 'Disable LibreOffice File Locking':
-            run_subcmd('disable-libreoffice-file-locking', window)
-        elif event == 'Stable':
-            run_subcmd('set-debian-stable', window)
-        elif event == 'Testing':
-            run_subcmd('set-debian-testing', window)
-        elif event == 'Unstable':
-            run_subcmd('set-debian-unstable', window)
+def event_loop():
+    """ Event Loop to process "events" and get the "values" of the inputs"""
+    window = sg.Window(title='Linux Maint GUI', layout=layout,
+            return_keyboard_events=True, use_default_focus=False, disable_close=True)
+    timeout = 100 # ms, 1st timeout to get going
+    intro = ('   <<< Use "EXIT" button to exit;'
+        ' window close (X) is disabled to prevent mid-operation exit >>>\n')
+    while True:
+        try:
+            # print('window:', window)
+            event, value_dict = window.read(timeout)
+            if timeout:
+                run_prompt(window)
+                if intro:
+                    print(intro)
+                    intro = ''
+                timeout = None
+            pattern, wds = '', []
+            if isinstance(value_dict, dict) and value_dict:
+                pattern = list(value_dict.values())[0]
+                wds = pattern.split()
+            print('\n\nevent:', event, 'wds:', wds)
+            if event in (sg.WIN_CLOSED, 'EXIT'):
+                # if user closes window or clicks EXIT
+                break
+            # print('You entered ', pattern)
+            if event == 'Update Linux':
+                run_subcmd('update-linux', window)
+            elif event == 'Refresh Icons':
+                run_subcmd('refresh-icons', window)
+            elif event == 'Enable Flatpak':
+                run_subcmd('enable-flatpak', window)
+            elif event == 'Cleanup Flatpak':
+                run_subcmd('cleanup-flatpak', window)
+            elif event == 'Purge Flatpak':
+                run_subcmd('purge-flatpak', window)
+            elif event == 'Disable LibreOffice File Locking':
+                run_subcmd('disable-libreoffice-file-locking', window)
+            elif event == 'Stable':
+                run_subcmd('set-debian-stable', window)
+            elif event == 'Testing':
+                run_subcmd('set-debian-testing', window)
+            elif event == 'Unstable':
+                run_subcmd('set-debian-unstable', window)
 
-    except Exception as exc:
-        print('EXCEPTION:', traceback.format_exc())
+        except Exception:
+            print('EXCEPTION:', traceback.format_exc())
+event_loop()
 
 window.close()
