@@ -106,14 +106,14 @@ So, you will have have some choices:
     * Restart crostini (i.e., right-click on Terminal in the shelf, and click "Shut down Linux").
 * **Cleanup Flatpak** - recovers disk space after uninstalling flatpak apps (which Discover does not do automatically)
 * **Purge Flatpak** - removes **ALL** install flatpak apps, the flatpak core tools, and **Discover's** awareness of flatpak; i.e., you cannot install flatpaks until re-enabled.
-* **Disable LibreOffice File Locking** - for LibreOffice to work on Google Drive, after installing LibreOffic, run  this to *partly* disable its incompatible file locking. **Notes:**
-    * You must also, in LibreOffice's Tools > Options > LibreOffice > Advanced > Open Expert Configuration, set:
+* **Disable LibreOffice File Locking** - for LibreOffice to work on Google Drive, after installing LibreOffice, run  this to *partly* disable its incompatible file locking. **Notes:**
+    * This applies **only** to Libreoffice from Debian repos (**not** the Flatpak).
+    * In LibreOffice's Tools > Options > LibreOffice > Advanced > Open Expert Configuration, also set:
         * *UseLocking* to false
         * *UseDocumentOOoLockFile* to false
     * You *may* wish to upgrade LibreOffice (e.g., by changing Debian repository to **Unstable**.)
-    * This tool has only been tested on Libreoffice from the Debian repos, and not the Flatpak version.
-    * **Hint**. For a much more pleasant LibreOffice look, run `sudo apt install libreoffice-gtk3` from Terminal.
-* For changing the Debian repository  from its intial **Stable** (and see **Which Debian Repository Should You Use** before doing so), select:
+    * **Hint**. For a more pleasant LibreOffice look, run `sudo apt install libreoffice-gtk3` in Terminal.
+* For changing the Debian repository  from its initial **Stable** (and see **Which Debian Repository Should You Use** before doing so), select:
     * **Debian Testing** - newer, less stable software; you cannot to return to **Stable**.
     * **Debian Unstable** - newest, least stable software; you may not be able to return to **Testing** and cannot return to **Stable**.
  
