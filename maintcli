@@ -152,6 +152,7 @@ EOF
 
     set -x
     update_linux
+    python3 -m pip install simple-term-menu
     echo -e "\n\n======> FINISHED: please restart Linux manually..."
 }
 
