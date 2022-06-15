@@ -132,9 +132,10 @@ Debian is famous for lagging well behind the lastest app releases, but **MaintMe
 * when changing respository, watch for errors and, and on failure, choose another
   until one succeeds (or restore a known good backup image).
 * upgrading to **Unstable** is typically a better choice than **Testing**;  use **Testing** only if
-  experimentally, you find it works best for your apps
+  experimentally, you find it works best for your apps. **Notes**:
 
-  * **note**: when you leave **Stable** for **Unstable** and **Testing**, `contrib` is added to the sources which adds certain apps like `tor`.
+  * when you leave **Stable** for **Unstable** and **Testing**, `contrib` is added to the sources which adds certain apps like `tor`.
+  * in v102, going to **Unstable** directly cased start-up problems; but goint to **Testing** and then **Unstable** worked; nw strategy is guaranteed to work forever.
 
 The built-in rules for manipulating Debian sources are very simplistic.  You can manually update the sources per:
 * [Debian SourcesList](https://wiki.debian.org/SourcesList)
