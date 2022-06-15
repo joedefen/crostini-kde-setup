@@ -152,8 +152,6 @@ EOF
 
     set -x
     update_linux
-        # note: after switching/upgrading PySimpleGUI may be uninstalled
-    sudo pip3 install PySimpleGUI
     echo -e "\n\n======> FINISHED: please restart Linux manually..."
 }
 
