@@ -135,7 +135,7 @@ Debian is famous for lagging well behind the lastest app releases, but **MaintMe
   experimentally, you find it works best for your apps. **Notes**:
 
   * when you leave **Stable** for **Unstable** and **Testing**, `contrib` is added to the sources which adds certain apps like `tor`.
-  * in v102, going to **Unstable** directly cased start-up problems; but goint to **Testing** and then **Unstable** worked; nw strategy is guaranteed to work forever.
+  * in v102, going to **Unstable** directly caused start-up problems; but going to **Testing** and then **Unstable** worked; no strategy is guaranteed to work forever.
 
 The built-in rules for manipulating Debian sources are very simplistic.  You can manually update the sources per:
 * [Debian SourcesList](https://wiki.debian.org/SourcesList)
