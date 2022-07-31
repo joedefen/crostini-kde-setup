@@ -1,10 +1,5 @@
 # CROSTINI KDE SETUP #
 
->**ChromeOS v100 ALERT:**
->* ChromeOS v100 broke [PySimpleGUI](https://pypi.org/project/PySimpleGUI/) used by the `MaintGUI` command, now replaced by `MaintMenu`.
->* The new `MaintMenu` is based on [Simple Terminal Menu](https://pypi.org/project/simple-term-menu/) which will be comparably unbreakable; beside simplicity, there are other advantages so the switch is "permanent".
->* See the section, "Updating `crostini-kde-setup` Itself" near the end to upgrade to `MaintMenu`.
-
 ### Purpose ###
 With only two commands, install key apps from KDE, one of the most popular Linux Desktops due to it efficiency, customizability, and good looks (but **it does NOT install the KDE Plasma Desktop**). For newbies, most importantly, it installs **Discover** which is an elegant, easy-to-use "app store" for Linux apps and nearly every app is free. 
 
@@ -38,9 +33,16 @@ And, it installs:
     * Unlike **Kate**, **Geany** can be run with sudo (e.g., to edit system files with a GUI editor instead of clumsy, crude `nano`)
     * To run a sudo'ed GUI app, like, **Geany**, from Terminal, first run `xhost +` on a separate line.
 
-*Note: this script has been tested on Chromebook v88 through v100.*
-
 Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfactorily** even though Discover offers the Desktop for installation.  So, you must mostly stick to installing "Applications", per se, in Discover, not the Plasma Desktop or its Addons.
+
+---
+### Known Issues (Based on Tests thru ChromeOS v103) ###
+
+>* **<font color="red">v100</font>: broke [PySimpleGUI](https://pypi.org/project/PySimpleGUI/) and thus `MaintGUI`.**
+>	* **Fix:** See the section, "Updating `crostini-kde-setup` Itself" near the end to upgrade to `MaintMenu`.
+>		* `MaintMenu` replaced ~~`MaintGUI`~~ and is based on [Simple Terminal Menu](https://pypi.org/project/simple-term-menu/) which is comparably unbreakable and has other advantages.
+>* **<font color="red">v102</font>: going directly to **Unstable** from **Stable** may cause start-up failure.**
+>	* **Workaround:** first, go to **Testing** and then **Unstable** (imaginably, this may happen in any ChromeOS version).
 
 ---
 ### Installation Instructions ###
@@ -135,7 +137,6 @@ Debian is famous for lagging well behind the lastest app releases, but **MaintMe
   experimentally, you find it works best for your apps. **Notes**:
 
   * when you leave **Stable** for **Unstable** and **Testing**, `contrib` is added to the sources which adds certain apps like `tor`.
-  * in v102, going to **Unstable** directly caused start-up problems; but going to **Testing** and then **Unstable** worked; no strategy is guaranteed to work forever.
 
 The built-in rules for manipulating Debian sources are very simplistic.  You can manually update the sources per:
 * [Debian SourcesList](https://wiki.debian.org/SourcesList)
