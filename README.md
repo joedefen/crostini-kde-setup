@@ -133,7 +133,7 @@ Debian is famous for lagging well behind the lastest app releases, but **MaintMe
 * before changing repository, backup Linux as a precaution (or accept the possibility you must re-install Linux).
 * when changing respository, watch for errors and, and on failure, choose another
   until one succeeds (or restore a known good backup image).
-* upgrading to **Unstable** is typically a better choice than **Testing**;  use **Testing** only if
+* upgrading to **Testing** is typically a better choice than **Unstable**;  use **Unstable** only if
   experimentally, you find it works best for your apps. **Notes**:
 
   * when you leave **Stable** for **Unstable** and **Testing**, `contrib` is added to the sources which adds certain apps like `tor`.
