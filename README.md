@@ -64,6 +64,7 @@ Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfa
 1. Find your installed Linux apps in the 'Linux app' folder of your Chromebook App Drawer (or type its name, e.g., "Discover", into the Launcher search dialog and hit return when it is first or click its icon).
 1. In particular, launch **Discover** to browse for available apps, install apps, launch installed apps, and remove unwanted apps.
 1. After every Chromebook update (which occur about monthly), we suggest you launch **MaintMenu** and choose **Update Linux** to ensure your container is running the most aggreeable software for your Chromebook).  Do this immediately if you used the "Starter Image" install method.
+	* If **MaintMenu** will not start, then it is likely that a `python` upgrade invalidated the installed packages.  In that case, in Terminal, run `pip3 install simple_term_menu` and try again. Still not working? From Terminal, run `maintmenu` which may suggest what remains broken.
 
 
 ---
