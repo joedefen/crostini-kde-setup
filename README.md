@@ -50,8 +50,10 @@ Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfa
 
 >In the last section of this README, there are alternative install instructions.
 
-1. In the Chromebook settings (under Advanced / Developers), enable Linux (the default disk size is OK). See [Set up Linux on Your Chromebook](https://support.google.com/chromebook/answer/9145439?p=chromebook_linuxapps&b=hatch-signed-mp-v6keys&visit_id=637506510150436611-3956044416&rd=1)
-1. After enabling Linux, a "Terminal" will open;  then enter these commands (one per line):
+1. In the Chromebook settings (under Advanced / Developers), enable Linux (the default disk size is OK). See [Set up Linux on Your Chromebook](https://support.google.com/chromebook/answer/9145439?p=chromebook_linuxapps&b=hatch-signed-mp-v6keys&visit_id=637506510150436611-3956044416&rd=1). After enabling Linux, a Terminal will open.  Setting the root and user password is recommended; enter these commands and choose a password (possibly the same) for both:
+	* `sudo passwd root`
+	* `sudo passwd $USER`
+3. Then enter these commands (one per line):
 	* `git clone https://github.com/joedefen/crostini-kde-setup.git`
 	* `bash crostini-kde-setup/kde-setup.sh`
 		* *Note: to enter the commands, you may copy each line in Chrome and right-
@@ -226,15 +228,14 @@ For example, run `maintcli update-linux` to update the Linux software in your co
 * this install method **requires** an Intel/AMD processor Chromebook using the x86 instruction set.  This method can minimize install time/efforts for trials, etc.
 * if you did the "Normal" installation, then do NOT do this installation unless you had difficulty and wish to completely replace your current container.
 * the "user" in the container is named "beta" (which affects how you do a few things).
-* the restored container size is only 6 GB and you may need to increase that soon depending on your needs.
+* the restored container size is defaulted and you may need to increase that soon depending on your needs.
 
 #### Steps for "Starter Image" Install
 1. Follow the **"Turn off Linux"** instructions in [Set up Linux on your Chromebook](https://support.google.com/chromebook/answer/9145439?hl=en).
 1. Enter "Crosh" (type CTRL-ALT-T), and run `vmc destroy termina`.
 1. Enter "chrome://flags" into Chrome's Omnibar, search for "crostini", and ensure all settings are "Default".
 1. Power down your Chromebook and restart it.
-1. From [tinyurl.com/Crostini-KDE-Setup-Images](https://tinyurl.com/Crostini-KDE-Setup-Images), pick and download one of the backup image files.
-	* Note the name includes the Debian Repository and the Chrome OS major version (e.g., "crostini-kde-unstable-v94-2021-12-11.tini" indicate Debian Unstable repository and that the image was built on Chrome OS version 94).
+1. From Releases on this page, pick and download a binary backup image files.
 1. Right-click the downloaded file and select, "Replace your Linux files and apps with a previous backup."
 	* To be sure, **avoid** the restore procedure in [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en).
 </strike>
