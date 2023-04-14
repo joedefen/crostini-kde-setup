@@ -1,5 +1,6 @@
 # CROSTINI KDE SETUP #
-> See this and similar projects at [Chrome Appliances](https://www.chromeappliances.com/)
+> * See this and similar projects at [Chrome Appliances](https://www.chromeappliances.com/)
+> * Having trouble?  See "Known Issues" below.  **ALERT**: if switched to Debian "Unstable" or "Testing", Debian 12 / Bookworm requires workarounds (starting about Apr 2023).
 
 ### Purpose ###
 With only two commands, install key apps from KDE, one of the most popular Linux Desktops due to it efficiency, customizability, and good looks (but **it does NOT install the KDE Plasma Desktop**). For newbies, most importantly, it installs **Discover** which is an elegant, easy-to-use "app store" for Linux apps and nearly every app is free. 
@@ -37,13 +38,18 @@ And, it installs:
 Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfactorily** even though Discover offers the Desktop for installation.  So, you must mostly stick to installing "Applications", per se, in Discover, not the Plasma Desktop or its Addons.
 
 ---
-### Known Issues (Based on Tests thru ChromeOS v103) ###
+### Known Issues (Based on Tests thru ChromeOS v112) ###
 
->* **<font color="red">v100</font>: broke [PySimpleGUI](https://pypi.org/project/PySimpleGUI/) and thus `MaintGUI`.**
+>* **v100: broke [PySimpleGUI](https://pypi.org/project/PySimpleGUI/) and thus `MaintGUI`.**
 >	* **Fix:** See the section, "Updating `crostini-kde-setup` Itself" near the end to upgrade to `MaintMenu`.
 >		* `MaintMenu` replaced ~~`MaintGUI`~~ and is based on [Simple Terminal Menu](https://pypi.org/project/simple-term-menu/) which is comparably unbreakable and has other advantages.
->* **<font color="red">v102</font>: going directly to **Unstable** from **Stable** may cause start-up failure.**
+>* **v102: going directly to Unstable from Stable may cause start-up failure.**
 >	* **Workaround:** first, go to **Testing** and then **Unstable** (imaginably, this may happen in any ChromeOS version).
+>* **v12 (Apr 2023): updated to "Unstable" or "Testing" (if Debian 12, Bookworm) breaks:**
+>
+>	* **sudo**.  Be sure to **first** set the root and user passwords; else you may be SOL when the upgrade breaks password-less `sudo`;  after the upgrade, run `sudo visudo` and set permissions as you wish.
+>
+>	* **pip3**. See [Next Debian/Ubuntu Releases Will Likely No Longer Allow pip install Ouside A Virtual Environment - Linux Uprising Blog](https://www.linuxuprising.com/2023/03/next-debianubuntu-releases-will-likely.html). To reinstall simple-term-menu, use `PIP_BREAK_SYSTEM_PACKAGES=1 pip3 install simple-term-menu`.
 
 ---
 ### Installation Instructions ###
