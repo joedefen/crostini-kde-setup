@@ -39,12 +39,14 @@ sudo apt -y install qt5ct breeze-icon-theme
 sudo apt -y install fonts-dejavu
 sudo apt -y install --no-install-recommends plasma-discover
 # NOTE: These moved from XxX/apps to XxX/legacy in v96
-xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-file-manager.png
-xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-software-update.png
-xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/512x512/*/utilities-terminal.png
+## xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-file-manager.png
+## xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-software-update.png
+## xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/512x512/*/utilities-terminal.png
+xdg-icon-resource --size 128 ./images/dolphin_system-file-manager.png
+xdg-icon-resource --size 256 ./images/konsole.png
+xdg-icon-resource --size 128 ./images/plasma-discover_plasmadiscover.png
 sudo apt -y install dolphin konsole kate okular geany
 sudo apt install --no-install-recommends python3-pip
-python3 -m pip install simple-term-menu
 sudo apt -y autoremove
 
 # create a basic .vimrc for typical developer

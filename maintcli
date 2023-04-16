@@ -208,10 +208,11 @@ function disable_libreoffice_file_locking() {
 !!!
 }
 
-
 trap -- '' SIGINT SIGQUIT SIGTERM SIGHUP SIGPIPE SIGUSR1 SIGUSR2
 case $1 in 
     get-state) get_state;;
+    set-password-root) sudo passwd root;;
+    set-password-user) sudo passwd ${USER};;
     update-linux) update_linux;;
     refresh-icons) refresh_icons;;
     enable-flatpak) enable_flatpak;;

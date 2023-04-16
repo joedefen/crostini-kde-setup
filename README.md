@@ -45,11 +45,14 @@ Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfa
 >		* `MaintMenu` replaced ~~`MaintGUI`~~ and is based on [Simple Terminal Menu](https://pypi.org/project/simple-term-menu/) which is comparably unbreakable and has other advantages.
 >* **v102: going directly to Unstable from Stable may cause start-up failure.**
 >	* **Workaround:** first, go to **Testing** and then **Unstable** (imaginably, this may happen in any ChromeOS version).
->* **v12 (Apr 2023): updated to "Unstable" or "Testing" (if Debian 12, Bookworm) breaks:**
+>* **v112 (Apr 2023): switching to "Debian Unstable" or "Debian Testing" (when based on Debian 12, Bookworm) breaks:**
 >
->	* **sudo**.  Be sure to **first** set the root and user passwords; else you may be SOL when the upgrade breaks password-less `sudo`;  after the upgrade, run `sudo visudo` and set permissions as you wish.
+>	* **sudo**.  Be sure to **first** set the root and user passwords; else you may be SOL when the upgrade breaks password-less `sudo`;  after the upgrade using your known root/user passwords, run `sudo visudo` and set permissions as you wish.
+>	    * **NOTE**. The latest version of `MaintMenu` has entries for setting the root and user password. Do those first to avoid being locked out of maintenance.
 >
->	* **pip3**. See [Next Debian/Ubuntu Releases Will Likely No Longer Allow pip install Ouside A Virtual Environment - Linux Uprising Blog](https://www.linuxuprising.com/2023/03/next-debianubuntu-releases-will-likely.html). To reinstall simple-term-menu, use `PIP_BREAK_SYSTEM_PACKAGES=1 pip3 install simple-term-menu`.
+>	* **pip3**. See [Next Debian/Ubuntu Releases Will Likely No Longer Allow pip install Ouside A Virtual Environment - Linux Uprising Blog](https://www.linuxuprising.com/2023/03/next-debianubuntu-releases-will-likely.html). If `MaintMenu` will not run due to missing `simple-term-menu`, re-install by running: `PIP_BREAK_SYSTEM_PACKAGES=1 pip3 install simple-term-menu`
+>
+>	    * **NOTE**. The latest version of `crostini-kde-setup` has no python package dependencies (i.e., its menu is built-in and `simple-term-menu` no longer required).
 
 ---
 ### Installation Instructions ###
@@ -85,21 +88,20 @@ Launch **MaintMenu** for most maintenance needs. From the Chromebook Launcher, i
 
 `MaintMenu` offers a "smart" subset of these menu options presenting only those that are sensible to use:
 ```
+=== MaintMenu: ChromeOS=vUnknown Version DebRelease=stable Flatpak=on  ===
 
-=== MaintMenu: ChromeOS=v100 DebRelease=unstable Flatpak=off LibOfcLock=off ===
-
-Select maintenance task by using the leading character OR
-      the direction keys and "Enter"
-
-  [q] Quit 
-  [u] Update Linux -- run after ChromeOS update (at least)
-  [r] Refresh Icons -- fix cases of icons becoming lost
-  [f] Enable Flatpak -- w Discover support (more steps in README)
-  [c] Cleanup Flatpak -- clean disk after uninstalling FlatPak apps
-  [p] Purge Flatpak -- remove FlatPak apps and disable its support
-  [l] Disable LibreOffice File Locking -- enable GDrive (more steps in README)
-  [t] Debian Testing -- switch to Testing release
-  [s] Debian Unstable -- switch to Unstable release (a.k.a., Sid)
+  q: Quit
+  A: Set root password
+  B: Set current user password
+  u: Update Linux -- run after ChromeOS update (at least)
+  r: Refresh Icons -- fix cases of icons becoming lost
+  f: Enable Flatpak -- w Discover support (more steps in README)
+  c: Cleanup Flatpak -- clean disk after uninstalling FlatPak apps
+  p: Purge Flatpak -- remove FlatPak apps and disable its support
+  l: Disable LibreOffice File Locking -- enable GDrive (more steps in README)
+  t: Debian Testing -- switch to Testing release
+  s: Debian Unstable -- switch to Unstable release (a.k.a., Sid)
+:::::: Highlight w Up/Down/key and Enter
 ```
 So, you will have have some choices:
 
@@ -107,6 +109,8 @@ So, you will have have some choices:
 
     * *After an operation, it is best to keep MaintMenu open in case of problems. Then, you can peruse the output, and read/copy/paste as needed for troubleshooting.*
 
+* **Set root password** -  *Always know your root (and user) password* ensure you can perform maintenance if an upgrade or pilot error mangles the "sudoers" config.
+* **Set current user password** - Similarly, know your user password (which may be the same as your root password in case of mangled "sudoers" config).
 * **Update Linux** - updates your Linux and its software which you should run periodically
   and after Chromebook major version updates.
 * **Refresh Icons** - *sometimes* repairs icons for linux apps when messed up *after* having been more correct than currently.  This will not fix icons for newly install programs being wrong, generally. After running this, all or most of the Linux icons will disappear, and slowly be restored when ChromeOS polls for installed Linux programs/icons.  Sometimes, ChromeOS will show a penguin as the icon for a program and then later repair it, and sometimes it is permanent because the icon is not present or has an unsupported format.
