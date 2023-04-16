@@ -336,6 +336,8 @@ def main():
                 run_subcmd('set-password-root')
             elif 'user password' in picked:
                 run_subcmd('set-password-user')
+            elif 'Update Linux' in picked:
+                run_subcmd('update-linux')
             elif 'Refresh Icons' in picked:
                 run_subcmd('refresh-icons')
             elif 'Enable Flatpak' in picked:
