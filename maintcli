@@ -9,6 +9,10 @@ function get_cros_pkg_ver() {
     sed -r 's!^(.*cros-packages/)([0-9]+)\b(.*)$!\2!' $apt_cros
 }
 
+function set_password() {
+    set -x
+    sudo passwd "$1"
+}
 
 function update_linux() {
     # upgrade the software in the crostini container
@@ -195,7 +199,6 @@ function disable_libreoffice_file_locking() {
         soffice=$(which soffice)
         sudo sed -i -E 's!^([^#].*_ENABLE_FILE_LOCKING.*)$!# \1!' $soffice
     fi
-
     cat <<'!!!'
 **********************************************************************************************
 ** + To fully enable non-Flatpak LibreOffice on Google Drive, also:
@@ -209,10 +212,11 @@ function disable_libreoffice_file_locking() {
 }
 
 trap -- '' SIGINT SIGQUIT SIGTERM SIGHUP SIGPIPE SIGUSR1 SIGUSR2
+stty sane # just in case
 case $1 in 
     get-state) get_state;;
-    set-password-root) sudo passwd root;;
-    set-password-user) sudo passwd ${USER};;
+    set-password-root) set_password root;;
+    set-password-user) set_password ${USER};;
     update-linux) update_linux;;
     refresh-icons) refresh_icons;;
     enable-flatpak) enable_flatpak;;

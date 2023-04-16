@@ -1,4 +1,4 @@
-#!/bin/bash
+/usr/share/icons/Adwaita/256x256/*/system-file-manager.png#!/bin/bash
 # Setup script to run on Crostini (i.e., Chromebook Linux) to
 # - bring the distro up-to-date
 # - create a bare KDE app "environment" so the apps look as if they
@@ -38,15 +38,11 @@ sudo apt -y install qt5ct breeze-icon-theme
 # NOTE: was ttf-dejavu before v96
 sudo apt -y install fonts-dejavu
 sudo apt -y install --no-install-recommends plasma-discover
-# NOTE: These moved from XxX/apps to XxX/legacy in v96
-## xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-file-manager.png
-## xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-software-update.png
-## xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/512x512/*/utilities-terminal.png
-xdg-icon-resource --size 128 ${HERE}/images/dolphin_system-file-manager.png
-xdg-icon-resource --size 256 ${HERE}/images/konsole.png
-xdg-icon-resource --size 128 ${HERE}/images/plasma-discover_plasmadiscover.png
+# NOTE: These move around to wherever ... so added to our source
+xdg-icon-resource install --size 256 ${HERE}/images/system-file-manager.png
+xdg-icon-resource install --size 256 ${HERE}/images/utilities-terminal.png
+xdg-icon-resource install --size 256 ${HERE}/images/system-software-update.png
 sudo apt -y install dolphin konsole kate okular geany
-sudo apt install --no-install-recommends python3-pip
 sudo apt -y autoremove
 
 # create a basic .vimrc for typical developer
