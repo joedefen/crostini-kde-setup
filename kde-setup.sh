@@ -42,9 +42,9 @@ sudo apt -y install --no-install-recommends plasma-discover
 ## xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-file-manager.png
 ## xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/256x256/*/system-software-update.png
 ## xdg-icon-resource install --size 256 /usr/share/icons/Adwaita/512x512/*/utilities-terminal.png
-xdg-icon-resource --size 128 ./images/dolphin_system-file-manager.png
-xdg-icon-resource --size 256 ./images/konsole.png
-xdg-icon-resource --size 128 ./images/plasma-discover_plasmadiscover.png
+xdg-icon-resource --size 128 ${HERE}/images/dolphin_system-file-manager.png
+xdg-icon-resource --size 256 ${HERE}/images/konsole.png
+xdg-icon-resource --size 128 ${HERE}/images/plasma-discover_plasmadiscover.png
 sudo apt -y install dolphin konsole kate okular geany
 sudo apt install --no-install-recommends python3-pip
 sudo apt -y autoremove
