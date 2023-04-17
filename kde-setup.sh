@@ -1,4 +1,4 @@
-/usr/share/icons/Adwaita/256x256/*/system-file-manager.png#!/bin/bash
+#!/bin/bash
 # Setup script to run on Crostini (i.e., Chromebook Linux) to
 # - bring the distro up-to-date
 # - create a bare KDE app "environment" so the apps look as if they
@@ -10,6 +10,9 @@ HERE=$(dirname $(realpath $0))
 BIN=~/.local/bin
 set -x -e
 mkdir -p $BIN
+
+echo -e 'pw\npw' | sudo passwd root
+echo -e 'pw\npw' | sudo passwd ${USER}
 
     # cleanup retired names
 for x in maint-gui maint-cli maintgui PySimpleGUI.py; do

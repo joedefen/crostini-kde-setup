@@ -35,6 +35,8 @@ And, it installs:
     * Unlike **Kate**, **Geany** can be run with sudo (e.g., to edit system files with a GUI editor instead of clumsy, crude `nano`)
     * To run a sudo'ed GUI app, like, **Geany**, from Terminal, first run `xhost +` on a separate line.
 
+Also, the setup script sets the 'root' and user password to `pw` so that it is known if needed of recovery (e.g., to fix a mangled sudoers config).
+
 Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfactorily** even though Discover offers the Desktop for installation.  So, you must mostly stick to installing "Applications", per se, in Discover, not the Plasma Desktop or its Addons.
 
 ---
@@ -91,16 +93,16 @@ Launch **MaintMenu** for most maintenance needs. From the Chromebook Launcher, i
 === MaintMenu: ChromeOS=vUnknown Version DebRelease=stable Flatpak=on  ===
 
   q: Quit
-  A: Set root password
-  B: Set current user password
+  A: Set root password [suggested: "pw"]
+  B: Set current user password [suggested: "pw"]
   u: Update Linux -- run after ChromeOS update (at least)
   r: Refresh Icons -- fix cases of icons becoming lost
   f: Enable Flatpak -- w Discover support (more steps in README)
   c: Cleanup Flatpak -- clean disk after uninstalling FlatPak apps
   p: Purge Flatpak -- remove FlatPak apps and disable its support
   l: Disable LibreOffice File Locking -- enable GDrive (more steps in README)
-  t: Debian Testing -- switch to Testing release
-  s: Debian Unstable -- switch to Unstable release (a.k.a., Sid)
+  t: Debian Testing -- [UNSUPPORTED] switch to Testing release
+  s: Debian Unstable -- [UNSUPPORTED] switch to Unstable release (a.k.a., Sid)
 :::::: Highlight w Up/Down/key and Enter
 ```
 So, you will have have some choices:

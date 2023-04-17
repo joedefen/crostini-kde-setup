@@ -306,8 +306,8 @@ def main():
         dry_run = args.dry_run
         opts = {
             'q': 'Quit',
-            'A': 'Set root password',
-            'B': 'Set current user password',
+            'A': 'Set root password [suggested: "pw"]',
+            'B': 'Set current user password [suggested: "pw"]',
             'u': 'Update Linux -- run after ChromeOS update (at least)',
             'r': 'Refresh Icons -- fix cases of icons becoming lost',
         }
@@ -319,9 +319,9 @@ def main():
         if every or state.libofc == 'on':
             opts['l'] = 'Disable LibreOffice File Locking -- enable GDrive (more steps in README)'
         if every or state.rel in ('stable', 'unstable'):
-            opts['t'] = 'Debian Testing -- switch to Testing release'
+            opts['t'] = 'Debian Testing -- [UNSUPPORTED] switch to Testing release'
         if every or state.rel in ('stable', 'testing'):
-            opts['s'] = 'Debian Unstable -- switch to Unstable release (a.k.a., Sid)'
+            opts['s'] = 'Debian Unstable -- [UNSUPPORTED] switch to Unstable release (a.k.a., Sid)'
         menu = Menu(opts)
         picked = opts[menu.prompt()]
         print(f'\n===> To run: {picked}\n')
