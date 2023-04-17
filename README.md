@@ -1,6 +1,8 @@
 # CROSTINI KDE SETUP #
 > * See this and similar projects at [Chrome Appliances](https://www.chromeappliances.com/)
-> * Having trouble?  See "Known Issues" below.  **ALERT**: if switched to Debian "Unstable" or "Testing", Debian 12 / Bookworm requires workarounds (starting about Apr 2023).
+> * Having trouble?  See "Known Issues" below.
+>
+>    *   **ALERT**: "Debian Testing" and "Debian Unstable" are unsupported options owing to gross  Debian 12 (a.k.a., Bookworm) incompatibilities (starting about Apr 2023).
 
 ### Purpose ###
 With only two commands, install key apps from KDE, one of the most popular Linux Desktops due to it efficiency, customizability, and good looks (but **it does NOT install the KDE Plasma Desktop**). For newbies, most importantly, it installs **Discover** which is an elegant, easy-to-use "app store" for Linux apps and nearly every app is free. 
@@ -47,14 +49,9 @@ Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfa
 >		* `MaintMenu` replaced ~~`MaintGUI`~~ and is based on [Simple Terminal Menu](https://pypi.org/project/simple-term-menu/) which is comparably unbreakable and has other advantages.
 >* **v102: going directly to Unstable from Stable may cause start-up failure.**
 >	* **Workaround:** first, go to **Testing** and then **Unstable** (imaginably, this may happen in any ChromeOS version).
->* **v112 (Apr 2023): switching to "Debian Unstable" or "Debian Testing" (when based on Debian 12, Bookworm) breaks:**
+>* **v112 (Apr 2023): Debian 12 (Bookworm) breaks compatibility of "Debian Unstable" and "Debian Testing"** with Crostini (e.g., breaking sudoers config, python package installs, all graphical/X11 apps, etc.).
 >
->	* **sudo**.  Be sure to **first** set the root and user passwords; else you may be SOL when the upgrade breaks password-less `sudo`;  after the upgrade using your known root/user passwords, run `sudo visudo` and set permissions as you wish.
->	    * **NOTE**. The latest version of `MaintMenu` has entries for setting the root and user password. Do those first to avoid being locked out of maintenance.
->
->	* **pip3**. See [Next Debian/Ubuntu Releases Will Likely No Longer Allow pip install Ouside A Virtual Environment - Linux Uprising Blog](https://www.linuxuprising.com/2023/03/next-debianubuntu-releases-will-likely.html). If `MaintMenu` will not run due to missing `simple-term-menu`, re-install by running: `PIP_BREAK_SYSTEM_PACKAGES=1 pip3 install simple-term-menu`
->
->	    * **NOTE**. The latest version of `crostini-kde-setup` has no python package dependencies (i.e., its menu is built-in and `simple-term-menu` no longer required).
+>	* **Workaround**. (1) re-create containers on Testing/Unstable. (2) Remain on Debian Stable.  
 
 ---
 ### Installation Instructions ###
@@ -131,23 +128,25 @@ So, you will have have some choices:
         * *UseDocumentOOoLockFile* to false
     * You *may* wish to upgrade LibreOffice (e.g., by changing Debian repository to **Unstable**.)
     * **Hint**. For a more pleasant LibreOffice look, run `sudo apt install libreoffice-gtk3` in Terminal.
-* For changing the Debian repository  from its initial **Stable** (and see **Which Debian Repository Should You Use** before doing so), select:
-    * **Debian Testing** - newer, less stable software; you cannot to return to **Stable**.
-    * **Debian Unstable** - newest, least stable software; you may not be able to return to **Testing** and cannot return to **Stable**.
+* **Currently Unsupported**: ~~For changing the Debian repository  from its initial **Stable** (and see **Which Debian Repository Should You Use** before doing so), select:~~
+    * ~~**Debian Testing** - newer, less stable software; you cannot to return to **Stable**.~~
+    * ~~**Debian Unstable** - newest, least stable software; you may not be able to return to **Testing** and cannot return to **Stable**.~~
  
 **NOTE**: **Snaps do not work well** (e.g., see [Yes, you can install Snap packages on Chrome OS, but it’s not great](https://chromeunboxed.com/install-snap-packages-chromebook-crostini-linux-how-to/)), and thus no Snap buttons are provided lest it leads you down that rathole.
 
 ---
 
-### Which Debian Repository Should You Use? ###
+### ~~Which Debian Repository Should You Use?~~ ###
 
-Debian is famous for lagging well behind the lastest app releases, but **MaintMenu** can remedy that.  Our advice:
+> **As of Apr 2023 until further notice, remain on Debian Stable** unless you wish to experiment on how to make Debian 12+ compatible with the current Crostini (based on Debian 11). *So, at least temporarily, ignore most of this section*.
+
+Debian is famous for lagging well behind the latest app releases, but **MaintMenu** can remedy that.  Our advice:
 * remain on **Stable** unless you require more current apps although **Unstable** and **Testing** are not nearly as risky as their names suggest.
 * you are initially on Debian **Stable** after enabling Linux; if you leave **Stable**,
   you can return only by re-creating Linux or restoring a backup of Linux when on **Stable**.
 * before leaving **Stable**, install every app you anticipate needing to minimize the odds of failing to install afterwards.
 * before changing repository, backup Linux as a precaution (or accept the possibility you must re-install Linux).
-* when changing respository, watch for errors and, and on failure, choose another
+* when changing repository, watch for errors and, and on failure, choose another
   until one succeeds (or restore a known good backup image).
 * upgrading to **Testing** is typically a better choice than **Unstable**;  use **Unstable** only if
   experimentally, you find it works best for your apps. **Notes**:
@@ -223,6 +222,7 @@ At any Terminal prompt, you may run `maintmenu` for a similar experience as runn
 Except for the user interface, you may perform the same tasks with `maintcli` which must be given a "subcommand" as an argument.
 ```
 	USE: maintcli {subcmd} # where {subcmd} may be:
+		  set-password-root, set-password-user,
 		  get-state, update-linux, refresh-icons,
 		  enable-flatpak, purge-flatpak, cleanup-flatpak,
 		  set-debian-testing, set-debian-unstable,

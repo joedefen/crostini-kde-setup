@@ -229,6 +229,7 @@ case $1 in
     disable-libreoffice-file-locking) disable_libreoffice_file_locking;;
     *) echo "ERROR: maintcli: Unknown command: '$1'";
         echo "USE: maintcli {subcmd} # where {subcmd} may be:"
+        echo "      set-password-root, set-password-user,"
         echo "      get-state, update-linux, refresh-icons,"
         echo "      enable-flatpak, purge-flatpak, cleanup-flatpak,"
         echo "      set-debian-testing, set-debian-unstable,"
