@@ -58,7 +58,7 @@ Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfa
 
 >In the last section of this README, there are alternative install instructions.
 
-1. In the Chromebook settings (under Advanced / Developers), enable Linux (the default disk size is OK). See [Set up Linux on Your Chromebook](https://support.google.com/chromebook/answer/9145439?p=chromebook_linuxapps&b=hatch-signed-mp-v6keys&visit_id=637506510150436611-3956044416&rd=1). After enabling Linux, a Terminal will open.  Setting the root and user password is recommended; enter these commands and choose a password (possibly the same) for both:
+1. In the Chromebook settings (under Advanced / Developers), enable Linux (the default disk size is OK). See [Set up Linux on Your Chromebook](https://support.google.com/chromebook/answer/9145439?p=chromebook_linuxapps&b=hatch-signed-mp-v6keys&visit_id=637506510150436611-3956044416&rd=1). After enabling Linux, a Terminal will open.  Setting the root and user password is recommended; enter these commands and choose a password (e.g., "root") for both:
 	* `sudo passwd root`
 	* `sudo passwd $USER`
 3. Then enter these commands (one per line):
