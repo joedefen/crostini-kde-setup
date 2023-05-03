@@ -64,7 +64,7 @@ Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfa
 3. Then enter these commands (one per line):
 	* `git clone https://github.com/joedefen/crostini-kde-setup.git`
 	* `bash crostini-kde-setup/kde-setup.sh`
-		* *Note: to enter the commands, you may copy each line in Chrome and right-
+		* *Note: to enter the commands, you may copy each line in Chrome and right-click
 		within the Terminal to paste, saving typing and avoiding typos.*
 1. After the script completes (and it will take 10 minutes or so), **restart your container** (i.e., *right-click* the Terminal icon on the shelf and select *Shut down Linux*; then launch *Terminal* again).
 
