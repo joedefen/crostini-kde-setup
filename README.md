@@ -231,8 +231,7 @@ For example, run `maintcli update-linux` to update the Linux software in your co
 
 ---
 
-### "Starter Image" Installation Instructions (DEPRECATED)
->Note: this alternative install method does not work for ChromeOS v100 and later. TBD, whether to revive this alternative method.
+### "Starter Image" Installation Instructions
 
 #### Notes for "Starter Image" Install
 	
@@ -241,12 +240,16 @@ For example, run `maintcli update-linux` to update the Linux software in your co
 * the "user" in the container is named "beta" (which affects how you do a few things).
 * the restored container size is defaulted and you may need to increase that soon depending on your needs.
 
-#### Steps for "Starter Image" Install
+#### "Easy" Steps for "Starter Image" Install
+1. From Releases on this page, pick and download a binary backup image file and install on your Chromebook's storage.
+1. Follow the restore instructions in [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en).
+
+#### "Extreme" Steps for "Starter Image" Install
+Although in recent versions of ChromeOS, the standard restore instructions seem to work more often.  But, if a standard restore fails, this procedure may reset your Chromebook's state to permit a successful restore.
 1. Follow the **"Turn off Linux"** instructions in [Set up Linux on your Chromebook](https://support.google.com/chromebook/answer/9145439?hl=en).
 1. Enter "Crosh" (type CTRL-ALT-T), and run `vmc destroy termina`.
 1. Enter "chrome://flags" into Chrome's Omnibar, search for "crostini", and ensure all settings are "Default".
 1. Power down your Chromebook and restart it.
 1. From Releases on this page, pick and download a binary backup image files.
 1. Right-click the downloaded file and select, "Replace your Linux files and apps with a previous backup."
-	* To be sure, **avoid** the restore procedure in [Back up & restore your Linux files and apps](https://support.google.com/chromebook/answer/9592813?hl=en).
-</strike>
+
