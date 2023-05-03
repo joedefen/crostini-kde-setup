@@ -58,9 +58,7 @@ Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfa
 
 >In the last section of this README, there are alternative install instructions.
 
-1. In the Chromebook settings (under Advanced / Developers), enable Linux (the default disk size is OK). See [Set up Linux on Your Chromebook](https://support.google.com/chromebook/answer/9145439?p=chromebook_linuxapps&b=hatch-signed-mp-v6keys&visit_id=637506510150436611-3956044416&rd=1). After enabling Linux, a Terminal will open.  Setting the root and user password is recommended; enter these commands and choose a password (e.g., "root") for both:
-	* `sudo passwd root`
-	* `sudo passwd $USER`
+1. In the Chromebook settings (under Advanced / Developers), enable Linux (the default disk size is OK). See [Set up Linux on Your Chromebook](https://support.google.com/chromebook/answer/9145439?p=chromebook_linuxapps&b=hatch-signed-mp-v6keys&visit_id=637506510150436611-3956044416&rd=1). After enabling Linux, a Terminal will open.
 3. Then enter these commands (one per line):
 	* `git clone https://github.com/joedefen/crostini-kde-setup.git`
 	* `bash crostini-kde-setup/kde-setup.sh`
@@ -109,6 +107,9 @@ So, you will have have some choices:
     * *After an operation, it is best to keep MaintMenu open in case of problems. Then, you can peruse the output, and read/copy/paste as needed for troubleshooting.*
 
 * **Set root password** -  *Always know your root (and user) password* ensure you can perform maintenance if an upgrade or pilot error mangles the "sudoers" config.
+
+    * **Note:**: the install script sets/resets the root and user passwords to "pw". Be sure to remember altered passwords.
+    
 * **Set current user password** - Similarly, know your user password (which may be the same as your root password in case of mangled "sudoers" config).
 * **Update Linux** - updates your Linux and its software which you should run periodically
   and after Chromebook major version updates.
