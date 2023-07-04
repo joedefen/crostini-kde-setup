@@ -193,24 +193,6 @@ function get_state() {
     echo $msg
 }
 
-function disable_libreoffice_file_locking() {
-    set -x
-    if which soffice > /dev/null; then
-        soffice=$(which soffice)
-        sudo sed -i -E 's!^([^#].*_ENABLE_FILE_LOCKING.*)$!# \1!' $soffice
-    fi
-    cat <<'!!!'
-**********************************************************************************************
-** + To fully enable non-Flatpak LibreOffice on Google Drive, also:
-**   + In LibreOffice's Tools > Options > LibreOffice > Advanced > Open Expert Configuration, set:
-**     + *UseLocking* to false
-**     + *UseDocumentOOoLockFile* to false
-** + You *may* wish to upgrade LibreOffice (e.g., by changing Debian repository to **Unstable**.)
-** + HINT: For a better LibreOffice look, run `sudo apt install libreoffice-gtk3` from Terminal.
-**********************************************************************************************
-!!!
-}
-
 trap -- '' SIGINT SIGQUIT SIGTERM SIGHUP SIGPIPE SIGUSR1 SIGUSR2
 stty sane # just in case
 case $1 in 
@@ -226,14 +208,12 @@ case $1 in
     set-debian-stable) set_debian_repository stable;;
     set-debian-testing) set_debian_repository testing;;
     set-debian-unstable) set_debian_repository unstable;;
-    disable-libreoffice-file-locking) disable_libreoffice_file_locking;;
     *) echo "ERROR: maintcli: Unknown command: '$1'";
         echo "USE: maintcli {subcmd} # where {subcmd} may be:"
         echo "      set-password-root, set-password-user,"
         echo "      get-state, update-linux, refresh-icons,"
         echo "      enable-flatpak, purge-flatpak, cleanup-flatpak,"
-        echo "      set-debian-testing, set-debian-unstable,"
-        echo "      or disable-libreoffice-file-locking"
+        echo "      set-debian-testing or set-debian-unstable"
         exit 1
         ;;
 esac
