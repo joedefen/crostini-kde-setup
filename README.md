@@ -16,7 +16,7 @@ For Linux newbies, these scripts help get you started with a minimal of command 
 
 **Notes/Limitations:**
 
-* To run very well, we recommend a mid-range Chromebook (i.e., a *minimum* of Intel i3 CPU, 8GB memory, 64 GB disk) for any Linux environment, and this foundation does not substantially raise (or lower) the recommended specs.
+* To run very well, we recommend a mid-range Chromebook (i.e., a *minimum* of Intel i3 CPU, 8GB memory, 64 GB disk) for any Linux environment, and this project does not substantially raise (or lower) the recommended specs.
 * Always temper expectations ... Crostini is design to run productivity apps (especially developer tools), not resource intensive games.
 * On low-end Chromebooks, temper expectations much more. With only 4GB RAM, increasing swap sometimes helps if you can spare the disk space (see [Get better performance from your Chromebook with Virtual RAM](https://www.chromecomputing.com/get-better-performance-from-your-chromebook-with-virtual-ram/))
 
@@ -42,7 +42,7 @@ Also, the setup script sets the 'root' and user password to `pw` so that it is k
 Again, **the KDE Plasma Desktop is not installed and cannot be installed satisfactorily** even though Discover offers the Desktop for installation.  So, you must mostly stick to installing "Applications", per se, in Discover, not the Plasma Desktop or its Addons.
 
 ---
-### Known Issues (Based on Tests thru ChromeOS v112) ###
+### Known Issues (Based on Tests thru ChromeOS v114) ###
 
 >* **v100: broke [PySimpleGUI](https://pypi.org/project/PySimpleGUI/) and thus `MaintGUI`.**
 >	* **Fix:** See the section, "Updating `crostini-kde-setup` Itself" near the end to upgrade to `MaintMenu`.
@@ -93,7 +93,6 @@ Launch **MaintMenu** for most maintenance needs. From the Chromebook Launcher, i
   f: Enable Flatpak -- w Discover support (more steps in README)
   c: Cleanup Flatpak -- clean disk after uninstalling FlatPak apps
   p: Purge Flatpak -- remove FlatPak apps and disable its support
-  l: Disable LibreOffice File Locking -- enable GDrive (more steps in README)
   t: Debian Testing -- [UNSUPPORTED] switch to Testing release
   s: Debian Unstable -- [UNSUPPORTED] switch to Unstable release (a.k.a., Sid)
 :::::: Highlight w Up/Down/key and Enter
@@ -120,13 +119,6 @@ So, you will have have some choices:
     * Restart crostini (i.e., right-click on Terminal in the shelf, and click "Shut down Linux").
 * **Cleanup Flatpak** - recovers disk space after uninstalling flatpak apps (which Discover does not do automatically)
 * **Purge Flatpak** - removes **ALL** install flatpak apps, the flatpak core tools, and **Discover's** awareness of flatpak; i.e., you cannot install flatpaks until re-enabled.
-* **Disable LibreOffice File Locking** - for LibreOffice to work on Google Drive, after installing LibreOffice, run  this to *partly* disable its incompatible file locking. **Notes:**
-    * This applies **only** to Libreoffice from Debian repos (**not** the Flatpak).
-    * In LibreOffice's Tools > Options > LibreOffice > Advanced > Open Expert Configuration, also set:
-        * *UseLocking* to false
-        * *UseDocumentOOoLockFile* to false
-    * You *may* wish to upgrade LibreOffice (e.g., by changing Debian repository to **Unstable**.)
-    * **Hint**. For a more pleasant LibreOffice look, run `sudo apt install libreoffice-gtk3` in Terminal.
 * **Currently Unsupported**: ~~For changing the Debian repository  from its initial **Stable** (and see **Which Debian Repository Should You Use** before doing so), select:~~
     * ~~**Debian Testing** - newer, less stable software; you cannot to return to **Stable**.~~
     * ~~**Debian Unstable** - newest, least stable software; you may not be able to return to **Testing** and cannot return to **Stable**.~~
