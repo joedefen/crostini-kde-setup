@@ -18,7 +18,7 @@ For Linux newbies, these scripts help get you started with a minimal of command 
 
 * To run very well, we recommend a mid-range Chromebook (i.e., a *minimum* of Intel i3 CPU, 8GB memory, 64 GB disk) for any Linux environment, and this project does not substantially raise (or lower) the recommended specs.
 * Always temper expectations ... Crostini is design to run productivity apps (especially developer tools), not resource intensive games.
-* On low-end Chromebooks, temper expectations much more. With only 4GB RAM, increasing swap sometimes helps if you can spare the disk space (see [Get better performance from your Chromebook with Virtual RAM](https://www.chromecomputing.com/get-better-performance-from-your-chromebook-with-virtual-ram/))
+* On low-end Chromebooks, temper expectations much more.
 
 ![KDEApps](images/Screenshot-KDEApps-2021-12-07.png)
 
