@@ -1,8 +1,13 @@
 # CROSTINI KDE SETUP #
-> * See this and similar projects at [Chrome Appliances](https://www.chromeappliances.com/)
-> * Having trouble?  See "Known Issues" below.
+
+> **ARCHIVED: NO LONGER MAINTAINED**
 >
->    *   **ALERT**: "Debian Testing" and "Debian Unstable" are unsupported options owing to gross  Debian 12 (a.k.a., Bookworm) incompatibilities (starting about Apr 2023).
+> This project is no longer maintained and has had no material changes since 2023.
+> ChromeOS is evolving rapidly, and the relevance of this project is declining
+> just as quickly. The developer is not interested in following those changes,
+> so the repository has been archived (read-only). It remains available "as is"
+> for anyone who still finds it useful, but expect no updates, fixes, or support.
+>
 
 ### Purpose ###
 With only two commands, install key apps from KDE, one of the most popular Linux Desktops due to it efficiency, customizability, and good looks (but **it does NOT install the KDE Plasma Desktop**). For newbies, most importantly, it installs **Discover** which is an elegant, easy-to-use "app store" for Linux apps and nearly every app is free. 
